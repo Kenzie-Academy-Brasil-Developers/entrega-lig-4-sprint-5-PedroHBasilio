@@ -10,6 +10,8 @@
 
 // Pedro
 function addBall(){
+    const column = document.getElementsByClassName('column')
+
     for(let i = 6; i >= 0; i --){
         if(column.children[i].childElementCount === 0){
             return true
