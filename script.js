@@ -14,12 +14,6 @@
 
 
 
-
-
-<<<<<<< HEAD
-
-//Sid
-=======
 //Sid
 
 
@@ -41,4 +35,4 @@ function createField() {
     }
 }
 createField()
->>>>>>> e34344f1ee5c28952a807b0ce2540c783d1eb9e5
+
