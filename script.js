@@ -1,11 +1,4 @@
 // Inti
-
-/*
-1 - adicionar um eventlistener de click na section que foi clicada no tabuleiro
-2 - capturar o currenttarget do evt e colocar na 
-
-
-*/
 const discA = document.createElement("div");
 const discB = document.createElement("div");
 discA.classList.add("discA-style");
@@ -18,6 +11,7 @@ fieldSection.addEventListener("click", (evt) => {
   if (currentPlayer === 1) {
     if (addBall === false) {
       selectedColumn.appendChild(discA);
+      // chamar funções de checar vitória
       currentPlayer = 2;
     }
   }
@@ -25,6 +19,7 @@ fieldSection.addEventListener("click", (evt) => {
   if (currentPlayer === 2) {
     if (addBall === false) {
       selectedColumn.appendChild(discB);
+      // chamar funções de checar vitória
       currentPlayer = 1;
     }
   }
