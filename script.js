@@ -22,59 +22,76 @@ function createField() {
 createField()
 
 // Pedro
-const column00 = document.getElementById("0")
-const column01 = document.getElementById("1")
-const column02 = document.getElementById("2")
-const column03 = document.getElementById("3")
-const column04 = document.getElementById("4")
-const column05 = document.getElementById("5")
-const column06 = document.getElementById("6")
+const test = document.querySelectorAll('.column')
+    //console.log(test)
 
-function addBall(){
-    for(let i = 5; i >= 0; i --){
-        if(column00.children[i].childElementCount === 0){
+function addBall(a) {
+    for (let i = 0; i < test.length; i--) {
+        if (a.children[i].childElementCount === 0) {
+            console.log("true")
             return true
         }
     }
+    console.log("false")
     return false
 }
 
 // Inti
 
+// document.addEventListener('click', (evt) => {
 
+//     const teste = document.querySelectorAll('div')
+//     evt.stopPropagation()
 
-function createBall(){    
+//     // console.log(teste)
+//     console.log(teste2)
+//         //console.log(teste.dataset.pos)
+// })
+// for()
+// {
+//     if(evt.id == objeto.id)
+//     {
+//         append
+//     }
+// }
+function adicionandoBall() {
+    for (let i = 0; i < test.length; i++) {
+        test[i].addEventListener('click', function(evt) {
+            createBall(test[i])
+        })
+    }
+}
+adicionandoBall()
+
 let currentPlayer = 1;
 
-column00.addEventListener("click", (evt) => {
-  const selectedColumn = evt.currentTarget;
+function createBall(x) {
 
-  console.log("oi")
-  if (currentPlayer === 1) {
-    if (addBall()) {
-      const discA = document.createElement("div");
-      discA.classList.add("discA-style");
-      selectedColumn.appendChild(discA);
-      // chamar funções de checar vitória e empate
-      currentPlayer = 2;
-    }
-  }
+    console.log('to aqui')
+    console.log(currentPlayer)
+        // x.addEventListener("click", (evt) => {
+        //const selectedColumn = evt.currentTarget;
 
-  if (currentPlayer === 2) {
-    if (addBall()) {
-      const discB = document.createElement("div");
-      discB.classList.add("discB-style");
-      selectedColumn.appendChild(discB);
-      // chamar funções de checar vitória e empate
-      currentPlayer = 1;
+    console.log(x)
+    if (currentPlayer === 1) {
+        if (addBall(x)) {
+            const discA = document.createElement("div");
+            discA.classList.add("discA-style");
+            x.appendChild(discA);
+            // chamar funções de checar vitória e empate
+            currentPlayer = 2;
+        }
+    } else if (currentPlayer === 2) {
+        if (addBall(x)) {
+            const discB = document.createElement("div");
+            discB.classList.add("discB-style");
+            x.appendChild(discB);
+            // chamar funções de checar vitória e empate
+            currentPlayer = 1;
+        }
     }
-  }
-});
+    //});
 }
-createBall()
+//createBall()
 
 // inti - final
-
-
-
-
