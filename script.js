@@ -29,6 +29,17 @@ fieldSection.addEventListener("click", (evt) => {
 
 // Pedro
 
+function addBall(){
+    for(let i = 6; i >= 0; i --){
+        if(column.children[i].childElementCount === 0){
+            return true
+        }
+    }
+    return false
+}
+
+
+
 //Sid
 
 
