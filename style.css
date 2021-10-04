@@ -1,8 +1,19 @@
 /* Inti */
+.discA-style {
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 100%;
+}
 
+.discB-style {
+  width: 10px;
+  height: 10px;
+  background: black;
+  border-radius: 100%;
+}
 
 /* Pedro */
-
 
 /* Sid */
 
