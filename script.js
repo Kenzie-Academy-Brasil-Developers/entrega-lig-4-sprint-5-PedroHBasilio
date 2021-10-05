@@ -103,7 +103,7 @@ function createBall(x) {
             // chamar funções de checar vitória e empate
             currentPlayer = 1;
             lastPlayer = 2
-                //map
+            //map
             diagonalMap[lastChild.id[0]][lastChild.id[2]] = "blue"
             map[lastChild.id[0]][lastChild.id[2]] = "blue"
             horizontal[lastChild.id[2]][lastChild.id[0]] = "blue"
