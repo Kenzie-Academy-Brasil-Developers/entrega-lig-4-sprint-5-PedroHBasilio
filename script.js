@@ -1,5 +1,6 @@
 //Sid
-
+let map = []
+let horizontal = []
 
 function createField() {
     const fieldSection = document.createElement('section')
@@ -11,70 +12,137 @@ function createField() {
         createColumn.classList = 'column'
         createColumn.id = `${i}`
         fieldSection.appendChild(createColumn)
+            //map
+        map.push([i])
         for (let j = 0; j < 6; j++) {
             const createQuad = document.createElement('div')
             createQuad.classList = 'cell'
             createQuad.dataset.pos = `${i}-${j}`
+            createQuad.id = `${i}-${j}`
             createColumn.appendChild(createQuad)
+
+            //map
+            map[i][j] = `${i}-${j}`
+
         }
     }
 }
 createField()
 
-// Pedro
-const column00 = document.getElementById("0")
-const column01 = document.getElementById("1")
-const column02 = document.getElementById("2")
-const column03 = document.getElementById("3")
-const column04 = document.getElementById("4")
-const column05 = document.getElementById("5")
-const column06 = document.getElementById("6")
 
-function addBall(){
-    for(let i = 5; i >= 0; i --){
-        if(column00.children[i].childElementCount === 0){
+console.log(map)
+
+// Pedro
+const test = document.querySelectorAll('.column')
+let lastChild
+
+function addBall(a) {
+    for (let i = 0; i < test.length; i++) {
+        if (a.children[i].childElementCount === 0) {
+            lastChild = a.children[i]
             return true
         }
     }
-    return false
 }
+
+
 
 // Inti
 
+function adicionandoBall() {
+    for (let i = 0; i < test.length; i++) {
+        test[i].addEventListener('click', function(evt) {
+            createBall(test[i])
+            victoryVertical(map[i])
+            for (let i = 0; i < horizontal.length; i++) {
+                victoryHorizontal(horizontal[i])
 
-
-function createBall(){    
-let currentPlayer = 1;
-
-column00.addEventListener("click", (evt) => {
-  const selectedColumn = evt.currentTarget;
-
-  console.log("oi")
-  if (currentPlayer === 1) {
-    if (addBall()) {
-      const discA = document.createElement("div");
-      discA.classList.add("discA-style");
-      selectedColumn.appendChild(discA);
-      // chamar funções de checar vitória e empate
-      currentPlayer = 2;
+            }
+        })
     }
-  }
 
-  if (currentPlayer === 2) {
-    if (addBall()) {
-      const discB = document.createElement("div");
-      discB.classList.add("discB-style");
-      selectedColumn.appendChild(discB);
-      // chamar funções de checar vitória e empate
-      currentPlayer = 1;
-    }
-  }
-});
 }
-createBall()
+adicionandoBall()
 
-// inti - final
+let currentPlayer = 1;
+let lastPlayer = 2
 
+function createBall(x) {
 
+    if (currentPlayer === 1) {
+        if (addBall(x)) {
+            const discA = document.createElement("div");
+            discA.classList.add("discA-style");
+            lastChild.appendChild(discA);
+            // chamar funções de checar vitória e empate
+            currentPlayer = 2;
+            lastPlayer = 1
 
+            //map
+            map[lastChild.id[0]][lastChild.id[2]] = "red"
+            horizontal[lastChild.id[2]][lastChild.id[0]] = "red"
+        }
+    } else if (currentPlayer === 2) {
+        if (addBall(x)) {
+            const discB = document.createElement("div");
+            discB.classList.add("discB-style");
+            lastChild.appendChild(discB);
+            // chamar funções de checar vitória e empate
+            currentPlayer = 1;
+            lastPlayer = 2
+                //map
+            map[lastChild.id[0]][lastChild.id[2]] = "blue"
+            horizontal[lastChild.id[2]][lastChild.id[0]] = "blue"
 
+        }
+    }
+}
+let countV = 1
+let countB = 1
+
+function victoryVertical(array) {
+    let last = null
+    console.log('verti', countV)
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] !== last) {
+            last = array[i]
+            countV = 1
+        } else {
+            countV++
+        }
+        if (4 == countV) {
+            console.log(`${lastPlayer} ganhou Vertical`)
+        }
+    }
+}
+
+function victoryHorizontal(array) {
+    let last = null
+    console.log("Hori", countB)
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] !== last) {
+            last = array[i]
+            countB = 1
+        } else {
+            countB++
+        }
+
+        if (countB == 4) {
+
+            console.log(`${lastPlayer} ganhou Horizontal`)
+        }
+    }
+}
+
+function arrHorizontal() {
+
+    for (let linha = 0; linha < 6; linha++) {
+        horizontal.push([linha])
+        console.log(horizontal[linha])
+        for (let coluna = 0; coluna < 7; coluna++) {
+            horizontal[linha][coluna] = map[coluna][linha]
+        }
+    }
+}
+arrHorizontal()
+console.log(horizontal)
