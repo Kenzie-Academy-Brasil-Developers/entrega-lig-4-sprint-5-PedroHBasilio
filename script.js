@@ -1,9 +1,22 @@
 //Sid
 let map = []
 let horizontal = []
+<<<<<<< HEAD
 let diagonal = [
     ['6-2', '5-3', '4-4', '3-5']
 ]
+=======
+let diagonal = []
+let diagonalMap = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+];
+>>>>>>> 4fe26608b49dbe6538be85c16be88edab1477d74
 
 function createField() {
     const fieldSection = document.createElement('section')
@@ -57,6 +70,7 @@ function adicionandoBall() {
         test[i].addEventListener('click', function(evt) {
             createBall(test[i])
             victoryVertical(map[i])
+            victoryDiagonal()
             for (let i = 0; i < horizontal.length; i++) {
                 victoryHorizontal(horizontal[i])
 
@@ -82,6 +96,7 @@ function createBall(x) {
             lastPlayer = 1
 
             //map
+            diagonalMap[lastChild.id[0]][lastChild.id[2]] = "red"
             map[lastChild.id[0]][lastChild.id[2]] = "red"
             horizontal[lastChild.id[2]][lastChild.id[0]] = "red"
         }
@@ -94,6 +109,7 @@ function createBall(x) {
             currentPlayer = 1;
             lastPlayer = 2
                 //map
+            diagonalMap[lastChild.id[0]][lastChild.id[2]] = "blue"
             map[lastChild.id[0]][lastChild.id[2]] = "blue"
             horizontal[lastChild.id[2]][lastChild.id[0]] = "blue"
 
@@ -146,6 +162,7 @@ function arrHorizontal() {
 }
 arrHorizontal()
 
+<<<<<<< HEAD
 function arrDiagonal(){
     
     for(let i = 0; i <= 6; i ++){
@@ -155,7 +172,66 @@ function arrDiagonal(){
         for(let j = 6; j >= 0; j--){
             diagonal[i][j] = map[i][j]
         }
+=======
+function arrDiagonal() {
+
+    for (let i = 0; i <= 6; i++) {
+        diagonal.push([i])
+>>>>>>> 4fe26608b49dbe6538be85c16be88edab1477d74
     }
 }
 arrDiagonal()
 console.log(diagonal)
+<<<<<<< HEAD
+=======
+
+
+function victoryDiagonal() {
+
+    const edgeX = diagonalMap[0].length - 2;
+    const edgeY = diagonalMap.length - 2;
+    console.log(diagonalMap)
+    for (let i = 0; i < edgeY; i++) {
+        for (let j = 0; j < edgeX; j++) {
+            let cell = diagonalMap[i][j];
+            if (cell === 'red') {
+                if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
+                    console.log('victory')
+                }
+            }
+        }
+    }
+    for (let i = 2; i < diagonalMap.length; i++) {
+        for (let j = 0; j < edgeX; j++) {
+            let cell = diagonalMap[i][j];
+            if (cell === 'red') {
+                if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
+                    console.log('victory')
+                }
+            }
+        }
+    }
+
+    for (let i = 0; i < edgeY.length; i++) {
+        for (let j = 0; j < edgeX; j++) {
+            let cell = diagonalMap[i][j];
+            if (cell === 'blue') {
+                if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
+                    console.log('victory')
+                }
+            }
+        }
+    }
+    for (let i = 2; i < diagonalMap.length; i++) {
+        for (let j = 0; j < edgeX; j++) {
+            let cell = diagonalMap[i][j];
+            if (cell === 'blue') {
+                if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
+                    console.log('victory')
+                }
+            }
+        }
+    }
+
+}
+>>>>>>> 4fe26608b49dbe6538be85c16be88edab1477d74
