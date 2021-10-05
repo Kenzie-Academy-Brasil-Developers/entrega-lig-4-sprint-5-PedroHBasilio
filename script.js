@@ -1,6 +1,7 @@
 //Sid
 let map = []
 let horizontal = []
+let diagonal = []
 
 function createField() {
     const fieldSection = document.createElement('section')
@@ -102,7 +103,6 @@ let countB = 1
 
 function victoryVertical(array) {
     let last = null
-    console.log('verti', countV)
     for (let i = 0; i < array.length; i++) {
         if (array[i] !== last) {
             last = array[i]
@@ -118,7 +118,6 @@ function victoryVertical(array) {
 
 function victoryHorizontal(array) {
     let last = null
-    console.log("Hori", countB)
     for (let i = 0; i < array.length; i++) {
         if (array[i] !== last) {
             last = array[i]
@@ -138,11 +137,29 @@ function arrHorizontal() {
 
     for (let linha = 0; linha < 6; linha++) {
         horizontal.push([linha])
-        console.log(horizontal[linha])
         for (let coluna = 0; coluna < 7; coluna++) {
             horizontal[linha][coluna] = map[coluna][linha]
         }
     }
 }
 arrHorizontal()
-console.log(horizontal)
+
+function arrDiagonal(){
+    
+    for(let i = 0; i <= 6; i ++){
+        diagonal.push([i])
+    }
+}
+arrDiagonal()
+console.log(diagonal)
+
+function victoryDiagonal(){
+    let quadrado
+    for(let i = 0; i < map.length; i++)
+    quadrado = posição[i]
+    if (quadrado === vermelho) {
+        if ( (quadrado === linha[i+1] && quadrado === linha[i+2] && quadrado === linha[i+3]) && (quadrado === coluna[i+1] && quadrado === coluna[i+2] && quadrado === coluna[i+3]) {
+            // chama função de vitoria
+        }
+    }
+}
