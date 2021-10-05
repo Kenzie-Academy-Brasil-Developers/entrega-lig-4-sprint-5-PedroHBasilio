@@ -1,11 +1,7 @@
 //Sid
 let map = []
 let horizontal = []
-<<<<<<< HEAD
-let diagonal = [
-    ['6-2', '5-3', '4-4', '3-5']
-]
-=======
+
 let diagonal = []
 let diagonalMap = [
     [0, 0, 0, 0, 0, 0],
@@ -16,7 +12,6 @@ let diagonalMap = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
 ];
->>>>>>> 4fe26608b49dbe6538be85c16be88edab1477d74
 
 function createField() {
     const fieldSection = document.createElement('section')
@@ -162,28 +157,8 @@ function arrHorizontal() {
 }
 arrHorizontal()
 
-<<<<<<< HEAD
-function arrDiagonal(){
-    
-    for(let i = 0; i <= 6; i ++){
-        diagonal.push([i])        
-    }
-    for(let i = 0; i <= 6; i++){
-        for(let j = 6; j >= 0; j--){
-            diagonal[i][j] = map[i][j]
-        }
-=======
-function arrDiagonal() {
 
-    for (let i = 0; i <= 6; i++) {
-        diagonal.push([i])
->>>>>>> 4fe26608b49dbe6538be85c16be88edab1477d74
-    }
-}
-arrDiagonal()
 console.log(diagonal)
-<<<<<<< HEAD
-=======
 
 
 function victoryDiagonal() {
@@ -212,7 +187,7 @@ function victoryDiagonal() {
         }
     }
 
-    for (let i = 0; i < edgeY.length; i++) {
+    for (let i = 0; i < edgeY; i++) {
         for (let j = 0; j < edgeX; j++) {
             let cell = diagonalMap[i][j];
             if (cell === 'blue') {
@@ -234,4 +209,4 @@ function victoryDiagonal() {
     }
 
 }
->>>>>>> 4fe26608b49dbe6538be85c16be88edab1477d74
+
