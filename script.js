@@ -2,6 +2,17 @@
 let map = []
 let horizontal = []
 
+let diagonal = []
+let diagonalMap = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+];
+
 function createField() {
     const fieldSection = document.createElement('section')
     fieldSection.id = 'field'
@@ -54,6 +65,7 @@ function adicionandoBall() {
         test[i].addEventListener('click', function(evt) {
             createBall(test[i])
             victoryVertical(map[i])
+            victoryDiagonal()
             for (let i = 0; i < horizontal.length; i++) {
                 victoryHorizontal(horizontal[i])
 
@@ -79,6 +91,7 @@ function createBall(x) {
             lastPlayer = 1
 
             //map
+            diagonalMap[lastChild.id[0]][lastChild.id[2]] = "red"
             map[lastChild.id[0]][lastChild.id[2]] = "red"
             horizontal[lastChild.id[2]][lastChild.id[0]] = "red"
         }
@@ -91,6 +104,7 @@ function createBall(x) {
             currentPlayer = 1;
             lastPlayer = 2
                 //map
+            diagonalMap[lastChild.id[0]][lastChild.id[2]] = "blue"
             map[lastChild.id[0]][lastChild.id[2]] = "blue"
             horizontal[lastChild.id[2]][lastChild.id[0]] = "blue"
 
@@ -102,7 +116,6 @@ let countB = 1
 
 function victoryVertical(array) {
     let last = null
-    console.log('verti', countV)
     for (let i = 0; i < array.length; i++) {
         if (array[i] !== last) {
             last = array[i]
@@ -118,7 +131,6 @@ function victoryVertical(array) {
 
 function victoryHorizontal(array) {
     let last = null
-    console.log("Hori", countB)
     for (let i = 0; i < array.length; i++) {
         if (array[i] !== last) {
             last = array[i]
@@ -138,11 +150,63 @@ function arrHorizontal() {
 
     for (let linha = 0; linha < 6; linha++) {
         horizontal.push([linha])
-        console.log(horizontal[linha])
         for (let coluna = 0; coluna < 7; coluna++) {
             horizontal[linha][coluna] = map[coluna][linha]
         }
     }
 }
 arrHorizontal()
-console.log(horizontal)
+
+
+console.log(diagonal)
+
+
+function victoryDiagonal() {
+
+    const edgeX = diagonalMap[0].length - 2;
+    const edgeY = diagonalMap.length - 2;
+    console.log(diagonalMap)
+    for (let i = 0; i < edgeY; i++) {
+        for (let j = 0; j < edgeX; j++) {
+            let cell = diagonalMap[i][j];
+            if (cell === 'red') {
+                if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
+                    console.log('victory')
+                }
+            }
+        }
+    }
+    for (let i = 2; i < diagonalMap.length; i++) {
+        for (let j = 0; j < edgeX; j++) {
+            let cell = diagonalMap[i][j];
+            if (cell === 'red') {
+                if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
+                    console.log('victory')
+                }
+            }
+        }
+    }
+
+    for (let i = 0; i < edgeY; i++) {
+        for (let j = 0; j < edgeX; j++) {
+            let cell = diagonalMap[i][j];
+            if (cell === 'blue') {
+                if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
+                    console.log('victory')
+                }
+            }
+        }
+    }
+    for (let i = 2; i < diagonalMap.length; i++) {
+        for (let j = 0; j < edgeX; j++) {
+            let cell = diagonalMap[i][j];
+            if (cell === 'blue') {
+                if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
+                    console.log('victory')
+                }
+            }
+        }
+    }
+
+}
+
