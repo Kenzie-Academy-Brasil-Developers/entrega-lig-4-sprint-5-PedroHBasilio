@@ -1,17 +1,29 @@
 /* Inti */
 
 .discA-style {
+    display: flex;
+    align-self: center;
     width: 50px;
     height: 50px;
-    background: red;
+    background-image: url('./Img/Captain_America_Shield.png');
+    background-size: 50px 50px;
     border-radius: 100%;
+    animation: throwIronMan 1s;
 }
 
 .discB-style {
+    display: flex;
+    align-self: center;
     width: 50px;
     height: 50px;
-    background: black;
+    background-image: url('./Img/iron-man-helmet-3D-model_600.jpg');
+    background-size: 50px 50px;
     border-radius: 100%;
+    animation: throwCaptain 1s;
+}
+
+footer header #roll {
+    animation: roll 1s;
 }
 
 
@@ -21,8 +33,56 @@
 /* Sid */
 
 body {
+    background-image: url('./Img/73619644aad1f40202d88ad3f99fabc6.jpg');
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
     margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+#score {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+    color: ivory;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#play1 {
+    color: rgb(39, 73, 167);
+}
+
+#play2 {
+    color: rgb(207, 43, 22);
+}
+
+header {
+    display: flex;
+    color: rgb(39, 73, 167);
+    justify-content: space-between;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+}
+
+
+/* h1 {
+    position: absolute;
+    bottom: 20%;
+} */
 
 #field {
     display: flex;
@@ -34,10 +94,83 @@ body {
 .cell {
     width: 50px;
     height: 50px;
-    border: 1px solid black;
+    border: 2px solid rgb(219, 51, 51);
 }
 
 .column {
     display: flex;
     flex-direction: column-reverse;
+}
+
+@media screen and (min-width:700px) {
+    .discA-style {
+        width: 100px;
+        height: 100px;
+        background-image: url('./Img/Captain_America_Shield.png');
+        background-size: 100px 100px;
+        border-radius: 100%;
+    }
+    .discB-style {
+        width: 100px;
+        height: 100px;
+        background-image: url('./Img/iron-man-helmet-3D-model_600.jpg');
+        background-size: 100px 100px;
+        border-radius: 100%;
+    }
+    body {
+        background-image: url('./Img/187-1875601_captain-america-civil-war.jpg');
+        background-size: 100vw 100vh;
+        background-repeat: no-repeat;
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    header {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    #field {
+        display: flex;
+        justify-content: center;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    .cell {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+    }
+    .column {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+@keyframes throwCaptain {
+    from {
+        transform: translateX(500px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes throwIronMan {
+    from {
+        transform: translateX(-500px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes roll {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 50px;
+    }
 }

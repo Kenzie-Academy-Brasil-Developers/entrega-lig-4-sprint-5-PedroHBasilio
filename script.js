@@ -1,7 +1,47 @@
 //Sid
+const body = document.getElementById('body')
+const header = document.createElement('header')
+const playerScore = document.createElement('section')
+const footer = document.createElement('footer')
+const playerTurn = document.createElement('h1')
+const player1Points = document.createElement('h2')
+const player2Points = document.createElement('h2')
+const timer = document.createElement('div')
+let playerSignTurn = document.createElement('div')
+playerScore.id = 'score'
+player1Points.id = 'play1'
+player2Points.id = 'play2'
+playerSignTurn.classList = 'discA-style'
+playerSignTurn.id = "roll"
+let currentPointP1 = 0
+let currentPointP2 = 0
+let time = 30
+
+function createHud() {
+    playerTurn.innerText = `Turno:`
+    player1Points.innerText = `Placar: ${currentPointP1}`
+    player2Points.innerText = `Placar: ${currentPointP2}`
+    body.appendChild(playerScore)
+
+    if (screen.width > 700) {
+        body.appendChild(header)
+        header.appendChild(playerTurn)
+        header.appendChild(playerSignTurn)
+    } else if (screen.width < 700) {
+        footer.appendChild(header)
+        header.appendChild(playerTurn)
+        header.appendChild(playerSignTurn)
+    }
+    playerScore.appendChild(player1Points)
+    playerScore.appendChild(player2Points)
+}
+createHud()
+
+// function UpdateHud() {}
+// UpdateHud()
+
 let map = []
 let horizontal = []
-let diagonal = []
 let diagonalMap = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -15,7 +55,7 @@ let diagonalMap = [
 function createField() {
     const fieldSection = document.createElement('section')
     fieldSection.id = 'field'
-    const body = document.getElementById('body')
+
     body.appendChild(fieldSection)
     for (let i = 0; i < 7; i++) {
         const createColumn = document.createElement('section')
@@ -38,11 +78,20 @@ function createField() {
     }
 }
 createField()
-
-
-console.log(map)
-
-// Pedro
+body.appendChild(footer)
+footer.appendChild(timer)
+setInterval(function() {
+        playerSignTurn.style.animationName = "none"
+        time--;
+        timer.innerText = `00:${time}`
+        if (time < 10) {
+            timer.innerText = `00:0${time}`
+        }
+        if (time === 0) {
+            time = 30
+        }
+    }, 1000)
+    // Pedro
 const test = document.querySelectorAll('.column')
 let lastChild
 
@@ -54,8 +103,6 @@ function addBall(a) {
         }
     }
 }
-
-
 
 // Inti
 
@@ -81,11 +128,13 @@ let lastPlayer = 2
 function createBall(x) {
 
     if (currentPlayer === 1) {
+
         if (addBall(x)) {
             const discA = document.createElement("div");
             discA.classList.add("discA-style");
             lastChild.appendChild(discA);
             // chamar funções de checar vitória e empate
+            playerSignTurn.classList = 'discB-style'
             currentPlayer = 2;
             lastPlayer = 1
 
@@ -100,6 +149,7 @@ function createBall(x) {
             discB.classList.add("discB-style");
             lastChild.appendChild(discB);
             // chamar funções de checar vitória e empate
+            playerSignTurn.classList = 'discA-style'
             currentPlayer = 1;
             lastPlayer = 2
                 //map
@@ -109,6 +159,8 @@ function createBall(x) {
 
         }
     }
+    playerSignTurn.style.animationName = 'roll'
+    time = 31
 }
 let countV = 1
 let countB = 1
@@ -155,15 +207,6 @@ function arrHorizontal() {
     }
 }
 arrHorizontal()
-
-function arrDiagonal() {
-
-    for (let i = 0; i <= 6; i++) {
-        diagonal.push([i])
-    }
-}
-arrDiagonal()
-console.log(diagonal)
 
 
 function victoryDiagonal() {
