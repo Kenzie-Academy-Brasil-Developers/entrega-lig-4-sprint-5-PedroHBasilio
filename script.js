@@ -210,3 +210,19 @@ function victoryDiagonal() {
 
 }
 
+const cell = document.getElementsByClassName('cell')
+
+function reset(){
+    const btnReset = document.createElement('button')
+    btnReset.innerText = 'Restart'
+    body.appendChild(btnReset)
+
+    btnReset.addEventListener('click', () =>{
+        for(let i = 0; i < cell.length; i ++){
+            cell[i].innerHTML = ""
+        }
+    }) 
+    
+}
+reset()
+
