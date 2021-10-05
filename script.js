@@ -12,10 +12,8 @@ function createField() {
         createColumn.classList = 'column'
         createColumn.id = `${i}`
         fieldSection.appendChild(createColumn)
-
-        //map
+            //map
         map.push([i])
-       
         for (let j = 0; j < 6; j++) {
             const createQuad = document.createElement('div')
             createQuad.classList = 'cell'
@@ -25,6 +23,7 @@ function createField() {
 
             //map
             map[i][j] = `${i}-${j}`
+
         }
     }
 }
@@ -35,7 +34,7 @@ console.log(map)
 
 // Pedro
 const test = document.querySelectorAll('.column')
-let lastChild 
+let lastChild
 
 function addBall(a) {
     for (let i = 0; i < test.length; i++) {
@@ -54,10 +53,14 @@ function adicionandoBall() {
     for (let i = 0; i < test.length; i++) {
         test[i].addEventListener('click', function(evt) {
             createBall(test[i])
-            // console.log(horizontal)
             victoryVertical(map[i])
+            for (let i = 0; i < horizontal.length; i++) {
+                victoryHorizontal(horizontal[i])
+
+            }
         })
     }
+
 }
 adicionandoBall()
 
@@ -77,7 +80,7 @@ function createBall(x) {
 
             //map
             map[lastChild.id[0]][lastChild.id[2]] = "red"
-            horizontal[lastChild.id[0]][lastChild.id[2]] = "red"
+            horizontal[lastChild.id[2]][lastChild.id[0]] = "red"
         }
     } else if (currentPlayer === 2) {
         if (addBall(x)) {
@@ -87,53 +90,59 @@ function createBall(x) {
             // chamar funções de checar vitória e empate
             currentPlayer = 1;
             lastPlayer = 2
-            //map
+                //map
             map[lastChild.id[0]][lastChild.id[2]] = "blue"
-            horizontal[lastChild.id[0]][lastChild.id[2]] = "blue"
+            horizontal[lastChild.id[2]][lastChild.id[0]] = "blue"
 
         }
     }
 }
+let countV = 1
+let countB = 1
 
-function victoryVertical(array){
+function victoryVertical(array) {
     let last = null
-    let count = 0
-    for(let i = 0; i < array.length; i++){
-        if(array[i] !== last){
+    console.log('verti', countV)
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] !== last) {
             last = array[i]
-            count = 0
+            countV = 1
+        } else {
+            countV++
         }
-        count ++
-        if(4 <= count){
-            console.log(`${lastPlayer}ganhou`)
+        if (4 == countV) {
+            console.log(`${lastPlayer} ganhou Vertical`)
         }
     }
 }
 
-function arrHorizontal(){
+function victoryHorizontal(array) {
+    let last = null
+    console.log("Hori", countB)
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] !== last) {
+            last = array[i]
+            countB = 1
+        } else {
+            countB++
+        }
 
-    for(let linha = 0; linha < 6; linha ++){
+        if (countB == 4) {
+
+            console.log(`${lastPlayer} ganhou Horizontal`)
+        }
+    }
+}
+
+function arrHorizontal() {
+
+    for (let linha = 0; linha < 6; linha++) {
         horizontal.push([linha])
-        for(let coluna = 0; coluna < 7; coluna++){
+        console.log(horizontal[linha])
+        for (let coluna = 0; coluna < 7; coluna++) {
             horizontal[linha][coluna] = map[coluna][linha]
         }
     }
 }
 arrHorizontal()
 console.log(horizontal)
-
-function victoryHorizontal(array){
-    let last = null
-    let count = 0
-    for(let i = 0; i < array.length; i++){
-        if(array[i] !== last){
-            last = array[i]
-            count = 0
-        }
-        count ++
-        if(4 <= count){
-            console.log(`${lastPlayer}ganhou`)
-        }
-    }
-}
-victoryHorizontal(map)
