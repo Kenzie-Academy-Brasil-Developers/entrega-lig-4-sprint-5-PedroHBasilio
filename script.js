@@ -1,8 +1,6 @@
 //Sid
 let map = []
 let horizontal = []
-
-let diagonal = []
 let diagonalMap = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -40,9 +38,6 @@ function createField() {
 }
 createField()
 
-
-console.log(map)
-
 // Pedro
 const test = document.querySelectorAll('.column')
 let lastChild
@@ -64,11 +59,18 @@ function adicionandoBall() {
     for (let i = 0; i < test.length; i++) {
         test[i].addEventListener('click', function(evt) {
             createBall(test[i])
-            victoryVertical(map[i])
-            victoryDiagonal()
-            for (let i = 0; i < horizontal.length; i++) {
-                victoryHorizontal(horizontal[i])
-
+            
+            if( victoryVertical(map[i]) ){
+                console.log(`${lastPlayer} ganhou Vertical`)
+            }
+            if( victoryDiagonal() ){
+                console.log(`${lastPlayer} ganhou Diagonal`)
+            }
+            if( victoryArrayHorizontal() ){
+                console.log(`${lastPlayer} ganhou Horizontal`)
+            }
+            if( tie() ){
+                console.log(`Empate`)
             }
         })
     }
@@ -124,7 +126,7 @@ function victoryVertical(array) {
             countV++
         }
         if (4 == countV) {
-            console.log(`${lastPlayer} ganhou Vertical`)
+            return true
         }
     }
 }
@@ -138,10 +140,8 @@ function victoryHorizontal(array) {
         } else {
             countB++
         }
-
         if (countB == 4) {
-
-            console.log(`${lastPlayer} ganhou Horizontal`)
+            return true
         }
     }
 }
@@ -157,21 +157,25 @@ function arrHorizontal() {
 }
 arrHorizontal()
 
-
-console.log(diagonal)
+function victoryArrayHorizontal(){
+    for (let i = 0; i < horizontal.length; i++) {
+       if( victoryHorizontal(horizontal[i]) ){
+           return true
+       }
+    }
+}
 
 
 function victoryDiagonal() {
 
     const edgeX = diagonalMap[0].length - 2;
     const edgeY = diagonalMap.length - 2;
-    console.log(diagonalMap)
     for (let i = 0; i < edgeY; i++) {
         for (let j = 0; j < edgeX; j++) {
             let cell = diagonalMap[i][j];
             if (cell === 'red') {
                 if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
-                    console.log('victory')
+                    return true
                 }
             }
         }
@@ -181,7 +185,7 @@ function victoryDiagonal() {
             let cell = diagonalMap[i][j];
             if (cell === 'red') {
                 if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
-                    console.log('victory')
+                    return true
                 }
             }
         }
@@ -192,7 +196,7 @@ function victoryDiagonal() {
             let cell = diagonalMap[i][j];
             if (cell === 'blue') {
                 if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
-                    console.log('victory')
+                    return true
                 }
             }
         }
@@ -202,7 +206,7 @@ function victoryDiagonal() {
             let cell = diagonalMap[i][j];
             if (cell === 'blue') {
                 if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
-                    console.log('victory')
+                    return true
                 }
             }
         }
@@ -211,6 +215,18 @@ function victoryDiagonal() {
 }
 
 const cell = document.getElementsByClassName('cell')
+
+function tie(){
+    let count = 0
+    for(let i = 0; i < cell.length; i ++){
+        if(cell[i].childElementCount == 1){
+            count ++
+        }
+        if(count == cell.length){
+            return true
+        }
+    }    
+}
 
 function reset(){
     const btnReset = document.createElement('button')
