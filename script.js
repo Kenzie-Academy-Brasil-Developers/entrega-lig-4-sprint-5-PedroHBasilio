@@ -1,7 +1,9 @@
 //Sid
 let map = []
 let horizontal = []
-let diagonal = []
+let diagonal = [
+    ['6-2', '5-3', '4-4', '3-5']
+]
 
 function createField() {
     const fieldSection = document.createElement('section')
@@ -147,19 +149,13 @@ arrHorizontal()
 function arrDiagonal(){
     
     for(let i = 0; i <= 6; i ++){
-        diagonal.push([i])
+        diagonal.push([i])        
+    }
+    for(let i = 0; i <= 6; i++){
+        for(let j = 6; j >= 0; j--){
+            diagonal[i][j] = map[i][j]
+        }
     }
 }
 arrDiagonal()
 console.log(diagonal)
-
-function victoryDiagonal(){
-    let quadrado
-    for(let i = 0; i < map.length; i++)
-    quadrado = posição[i]
-    if (quadrado === vermelho) {
-        if ( (quadrado === linha[i+1] && quadrado === linha[i+2] && quadrado === linha[i+3]) && (quadrado === coluna[i+1] && quadrado === coluna[i+2] && quadrado === coluna[i+3]) {
-            // chama função de vitoria
-        }
-    }
-}
