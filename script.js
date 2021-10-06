@@ -1,12 +1,10 @@
 //Sid
 let map = [];
 let horizontal = [];
-let diagonalMap = [
-    []
-];
+let diagonalMap = [ [] ];
 
-let numColunas = 10; //7 //5
-let numLinhas = 7; //6 //4
+let numColunas = 10; 
+let numLinhas = 7; 
 
 function createField(column, quad) {
     const fieldSection = document.createElement('section')
@@ -85,7 +83,6 @@ function createBall(x) {
             const discA = document.createElement("div");
             discA.classList.add("discA-style");
             lastChild.appendChild(discA);
-            // chamar funções de checar vitória e empate
             currentPlayer = 2;
             lastPlayer = 1
 
@@ -99,7 +96,6 @@ function createBall(x) {
             const discB = document.createElement("div");
             discB.classList.add("discB-style");
             lastChild.appendChild(discB);
-            // chamar funções de checar vitória e empate
             currentPlayer = 1;
             lastPlayer = 2
             //map
@@ -162,53 +158,35 @@ function victoryArrayHorizontal(){
     }
 }
 
+const nPlayers = ['red', 'blue']
 
 function victoryDiagonal() {
 
     const edgeX = diagonalMap[0].length - 2;
     const edgeY = diagonalMap.length - 2;
-    for (let i = 0; i < edgeY; i++) {
-        for (let j = 0; j < edgeX; j++) {
-            let cell = diagonalMap[i][j];
-            if (cell === 'red') {
-                if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
-                    return true
-                }
-            }
-        }
-    }
-    for (let i = 2; i < diagonalMap.length; i++) {
-        for (let j = 0; j < edgeX; j++) {
-            let cell = diagonalMap[i][j];
-            if (cell === 'red') {
-                if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
-                    return true
-                }
-            }
-        }
-    }
 
-    for (let i = 0; i < edgeY; i++) {
-        for (let j = 0; j < edgeX; j++) {
-            let cell = diagonalMap[i][j];
-            if (cell === 'blue') {
-                if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
-                    return true
+    for(let p = 0; p <= 1; p++){
+        for (let i = 0; i < edgeY; i++) {
+            for (let j = 0; j < edgeX; j++) {
+                let cell = diagonalMap[i][j];
+                if (cell === nPlayers[p]) {
+                    if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
+                        return true
+                    }
+                }
+            }
+        }
+        for (let i = 2; i < diagonalMap.length; i++) {
+            for (let j = 0; j < edgeX; j++) {
+                let cell = diagonalMap[i][j];
+                if (cell === nPlayers[p]) {
+                    if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
+                        return true
+                    }
                 }
             }
         }
     }
-    for (let i = 2; i < diagonalMap.length; i++) {
-        for (let j = 0; j < edgeX; j++) {
-            let cell = diagonalMap[i][j];
-            if (cell === 'blue') {
-                if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
-                    return true
-                }
-            }
-        }
-    }
-
 }
 
 const cell = document.getElementsByClassName('cell')
