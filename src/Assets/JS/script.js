@@ -7,6 +7,9 @@ const playerTurn = document.createElement('h1')
 const player1Points = document.createElement('h2')
 const player2Points = document.createElement('h2')
 const timer = document.createElement('div')
+const win = document.createElement('div')
+win.classList = 'win'
+win.style.display = 'none'
 let playerSignTurn = document.createElement('div')
 playerScore.id = 'score'
 player1Points.id = 'play1'
@@ -16,6 +19,7 @@ playerSignTurn.id = "roll"
 let currentPointP1 = 0
 let currentPointP2 = 0
 let time = 30
+body.appendChild(win)
 
 function createHud() {
     playerTurn.innerText = `Turno:`
