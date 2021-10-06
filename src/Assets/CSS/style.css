@@ -194,10 +194,10 @@ footer {
 
 @keyframes roll {
     from {
-        width: 0px;
+        transform: rotateY(180deg);
     }
     to {
-        width: 50px;
+        transform: rotateY(0deg);
     }
 }
 

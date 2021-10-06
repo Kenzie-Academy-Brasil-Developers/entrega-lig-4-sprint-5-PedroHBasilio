@@ -10,6 +10,7 @@ const timer = document.createElement('div')
 const win = document.createElement('div')
 win.classList = 'win'
 win.style.display = 'none'
+    //win.id = 'capConsecutiveWin'
 let playerSignTurn = document.createElement('div')
 playerScore.id = 'score'
 player1Points.id = 'play1'
