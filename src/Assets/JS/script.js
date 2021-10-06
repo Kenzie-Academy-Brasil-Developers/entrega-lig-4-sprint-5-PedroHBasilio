@@ -41,41 +41,50 @@ function createHud() {
 }
 createHud()
 
-// function UpdateHud() {}
-// UpdateHud()
-
 let map = [];
 let horizontal = [];
 let diagonalMap = [ [] ];
 
-let numColunas = 7; 
-let numLinhas = 6; 
+let numColunas = 7;
+let numLinhas = 6;
+
+const fieldSection = document.createElement('section')
+fieldSection.id = 'field'
+body.appendChild(fieldSection)
 
 function createField(column, quad) {
-    const fieldSection = document.createElement('section')
-    fieldSection.id = 'field'
 
-    body.appendChild(fieldSection)
     for (let i = 0; i < column; i++) {
         const createColumn = document.createElement('section')
         createColumn.classList = 'column'
         createColumn.id = `${i}`
         fieldSection.appendChild(createColumn)
-            //map
-        map.push([i])
-        diagonalMap.push([i])
         for (let j = 0; j < quad; j++) {
             const createQuad = document.createElement('div')
             createQuad.classList = 'cell'
             createQuad.dataset.pos = `${i}-${j}`
             createQuad.id = `${i}-${j}`
             createColumn.appendChild(createQuad)
+        }
+    }
+    createMap(column, quad)
+
+}
+
+function createMap(numColunas, numLinhas) {
+
+    for (let i = 0; i < numColunas; i++) {
+        //map
+        map.push([i])
+        diagonalMap.push([i])
+        for (let j = 0; j < numLinhas; j++) {
 
             //map
             map[i][j] = `${i}-${j}`
             diagonalMap[i][j] = `${i}-${j}`
         }
     }
+
 }
 
 createField(numColunas, numLinhas)
@@ -83,16 +92,24 @@ body.appendChild(footer)
 footer.appendChild(timer)
 
 setInterval(function() {
-        playerSignTurn.style.animationName = "none"
-        time--;
-        timer.innerText = `00:${time}`
-        if (time < 10) {
-            timer.innerText = `00:0${time}`
+    time--;
+
+    timer.innerText = `00:${time}`
+    if (time < 10) {
+        timer.innerText = `00:0${time}`
+    }
+    if (time === 0) {
+        if (currentPlayer === 1) {
+            currentPlayer = 2
+            playerSignTurn.classList = 'discB-style'
+        } else {
+            currentPlayer = 1
+            playerSignTurn.classList = 'discA-style'
         }
-        if (time === 0) {
-            time = 30
-        }
+        time = 30
+    }
 }, 1000)
+
 
 // Pedro
 const test = document.querySelectorAll('.column')
@@ -127,6 +144,7 @@ function adicionandoBall() {
                     score2 ++
                     player2Points.innerText = `Placar:${score2}`
                 }
+                victorious()
             }
             if( victoryDiagonal() ){
                 if(lastPlayer == 1){
@@ -138,7 +156,7 @@ function adicionandoBall() {
                     player2Points.innerText = `Placar:${score2}`
 
                 }
-                
+                victorious()
             }
             if( victoryArrayHorizontal() ){
                 if(lastPlayer == 1){
@@ -149,8 +167,9 @@ function adicionandoBall() {
                     score2 ++
                     player2Points.innerText = `Placar:${score2}`
                 }
+                victorious()
             }
-            if( tie() ){
+            if (tie()) {
                 console.log(`Empate`)
             }
         })
@@ -158,18 +177,30 @@ function adicionandoBall() {
 }
 adicionandoBall()
 
+function victorious() {
+    if (lastPlayer === 1) {
+        win.id = 'capWin'
+    } else {
+        win.id = 'ironWin'
+    }
+
+    win.style.display = 'flex'
+    setTimeout(() => {
+        win.style.display = 'none'
+    }, 2000, )
+
+    resetBoard()
+}
 let currentPlayer = 1;
 let lastPlayer = 2
 
 function createBall(x) {
-
     if (currentPlayer === 1) {
-
+        console.log('click')
         if (addBall(x)) {
             const discA = document.createElement("div");
             discA.classList.add("discA-style");
             lastChild.appendChild(discA);
-            playerSignTurn.classList = 'discB-style'
             currentPlayer = 2;
             lastPlayer = 1
 
@@ -183,10 +214,9 @@ function createBall(x) {
             const discB = document.createElement("div");
             discB.classList.add("discB-style");
             lastChild.appendChild(discB);
-            playerSignTurn.classList = 'discA-style'
             currentPlayer = 1;
             lastPlayer = 2
-            
+
             //map
             diagonalMap[lastChild.id[0]][lastChild.id[2]] = "blue"
             map[lastChild.id[0]][lastChild.id[2]] = "blue"
@@ -194,8 +224,20 @@ function createBall(x) {
 
         }
     }
-    playerSignTurn.style.animationName = 'roll'
+
+
+    setTimeout(function() {
+        playerSignTurn.style.animationName = 'roll'
+
+        if (currentPlayer == 2) {
+            playerSignTurn.classList = 'discB-style'
+        } else {
+            playerSignTurn.classList = 'discA-style'
+        }
+
+    }, 550)
     time = 31
+    playerSignTurn.style.animationName = "none"
 }
 let countV = 1
 let countB = 1
@@ -238,14 +280,15 @@ function arrHorizontal(nLinha, nColuna) {
             horizontal[linha][coluna] = map[coluna][linha]
         }
     }
+    horizontalHolder = horizontal
 }
 arrHorizontal(numLinhas, numColunas)
 
-function victoryArrayHorizontal(){
+function victoryArrayHorizontal() {
     for (let i = 0; i < horizontal.length; i++) {
-       if( victoryHorizontal(horizontal[i]) ){
-           return true
-       }
+        if (victoryHorizontal(horizontal[i])) {
+            return true
+        }
     }
 }
 
@@ -256,7 +299,7 @@ function victoryDiagonal() {
     const edgeX = diagonalMap[0].length - 2;
     const edgeY = diagonalMap.length - 2;
 
-    for(let p = 0; p <= 1; p++){
+    for (let p = 0; p <= 1; p++) {
         for (let i = 0; i < edgeY; i++) {
             for (let j = 0; j < edgeX; j++) {
                 let cell = diagonalMap[i][j];
@@ -282,29 +325,49 @@ function victoryDiagonal() {
 
 const cell = document.getElementsByClassName('cell')
 
-function tie(){
+function tie() {
     let count = 0
-    for(let i = 0; i < cell.length; i ++){
-        if(cell[i].childElementCount == 1){
-            count ++
+    for (let i = 0; i < cell.length; i++) {
+        if (cell[i].childElementCount == 1) {
+            count++
         }
-        if(count == cell.length){
+        if (count == cell.length) {
             return true
         }
-    }    
+    }
+    win.style.display = 'flex'
+    win.id = "draw"
+    setTimeout(function() {
+        win.style.display = 'none'
+    }, 1500)
+    time = 31
+
 }
 
-function reset(){
+
+
+function reset() {
     const btnReset = document.createElement('button')
     btnReset.innerText = 'Restart'
     body.appendChild(btnReset)
 
-    btnReset.addEventListener('click', () =>{
-        for(let i = 0; i < cell.length; i ++){
+    btnReset.addEventListener('click', () => {
+        for (let i = 0; i < cell.length; i++) {
             cell[i].innerHTML = ""
         }
-    }) 
-    
+        time = 31
+    })
+
 }
 reset()
 
+function resetBoard() {
+    for (let i = 0; i < cell.length; i++) {
+        cell[i].innerHTML = ""
+    }
+    map = [];
+    horizontal = [];
+    diagonalMap = []
+    createMap(numColunas, numLinhas)
+    arrHorizontal(numLinhas, numColunas)
+}
