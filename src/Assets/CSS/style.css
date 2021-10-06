@@ -5,7 +5,7 @@
     align-self: center;
     width: 50px;
     height: 50px;
-    background-image: url('./Img/Captain_America_Shield.png');
+    background-image: url('/src/Assets/Img/Captain_America_Shield.png');
     background-size: 50px 50px;
     border-radius: 100%;
     animation: throwIronMan 1s;
@@ -16,7 +16,7 @@
     align-self: center;
     width: 50px;
     height: 50px;
-    background-image: url('./Img/iron-man-helmet-3D-model_600.jpg');
+    background-image: url('/src/Assets/Img/iron-man-helmet-3D-model_600.jpg');
     background-size: 50px 50px;
     border-radius: 100%;
     animation: throwCaptain 1s;
@@ -33,7 +33,7 @@ footer header #roll {
 /* Sid */
 
 body {
-    background-image: url('./Img/73619644aad1f40202d88ad3f99fabc6.jpg');
+    background-image: url('/src/Assets/Img/mobileBG.jpg');
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     margin-top: 100px;
@@ -106,19 +106,15 @@ footer {
     .discA-style {
         width: 100px;
         height: 100px;
-        background-image: url('./Img/Captain_America_Shield.png');
         background-size: 100px 100px;
-        border-radius: 100%;
     }
     .discB-style {
         width: 100px;
         height: 100px;
-        background-image: url('./Img/iron-man-helmet-3D-model_600.jpg');
         background-size: 100px 100px;
-        border-radius: 100%;
     }
     body {
-        background-image: url('./Img/187-1875601_captain-america-civil-war.jpg');
+        background-image: url('/src/Assets/Img/desktopBG.jpg');
         background-size: 100vw 100vh;
         background-repeat: no-repeat;
         margin-top: 100px;
