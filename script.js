@@ -1,29 +1,27 @@
 //Sid
-let map = []
-let horizontal = []
+let map = [];
+let horizontal = [];
 let diagonalMap = [
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0]
+    []
 ];
 
-function createField() {
+let numColunas = 10; //7 //5
+let numLinhas = 7; //6 //4
+
+function createField(column, quad) {
     const fieldSection = document.createElement('section')
     fieldSection.id = 'field'
     const body = document.getElementById('body')
     body.appendChild(fieldSection)
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < column; i++) {
         const createColumn = document.createElement('section')
         createColumn.classList = 'column'
         createColumn.id = `${i}`
         fieldSection.appendChild(createColumn)
             //map
         map.push([i])
-        for (let j = 0; j < 6; j++) {
+        diagonalMap.push([i])
+        for (let j = 0; j < quad; j++) {
             const createQuad = document.createElement('div')
             createQuad.classList = 'cell'
             createQuad.dataset.pos = `${i}-${j}`
@@ -32,11 +30,11 @@ function createField() {
 
             //map
             map[i][j] = `${i}-${j}`
-
+            diagonalMap[i][j] = `${i}-${j}`
         }
     }
 }
-createField()
+createField(numColunas, numLinhas)
 
 // Pedro
 const test = document.querySelectorAll('.column')
@@ -74,7 +72,6 @@ function adicionandoBall() {
             }
         })
     }
-
 }
 adicionandoBall()
 
@@ -146,16 +143,16 @@ function victoryHorizontal(array) {
     }
 }
 
-function arrHorizontal() {
+function arrHorizontal(nLinha, nColuna) {
 
-    for (let linha = 0; linha < 6; linha++) {
+    for (let linha = 0; linha < nLinha; linha++) {
         horizontal.push([linha])
-        for (let coluna = 0; coluna < 7; coluna++) {
+        for (let coluna = 0; coluna < nColuna; coluna++) {
             horizontal[linha][coluna] = map[coluna][linha]
         }
     }
 }
-arrHorizontal()
+arrHorizontal(numLinhas, numColunas)
 
 function victoryArrayHorizontal(){
     for (let i = 0; i < horizontal.length; i++) {
