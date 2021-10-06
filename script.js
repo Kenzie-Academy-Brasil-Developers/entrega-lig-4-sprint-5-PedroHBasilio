@@ -23,9 +23,13 @@ easyMode.textContent = "Fácil";
 normalMode.textContent = "Médio";
 hardMode.textContent = "Difícil";
 
-boxSelectionModes.appendChild(easyMode);
-boxSelectionModes.appendChild(normalMode);
-boxSelectionModes.appendChild(hardMode);
+const btnFlex = document.createElement("div");
+btnFlex.classList.add("btn-mobile");
+boxSelectionModes.appendChild(btnFlex);
+
+btnFlex.appendChild(easyMode);
+btnFlex.appendChild(normalMode);
+btnFlex.appendChild(hardMode);
 
 let numColunas;
 let numLinhas;
@@ -46,6 +50,8 @@ boxSelectionModes.addEventListener("click", (evt) => {
     numLinhas = 7;
   }
 
+  // chamar função de reproduzir a musica tema do jogo
+  initialScreen.classList.remove("initial-screen");
   initialScreen.classList.add("initial-none");
 });
 // INTI - FINAL
