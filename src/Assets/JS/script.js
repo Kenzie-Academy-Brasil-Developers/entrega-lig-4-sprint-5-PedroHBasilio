@@ -44,31 +44,27 @@ createHud()
 // function UpdateHud() {}
 // UpdateHud()
 
-let map = []
-let horizontal = []
-let diagonalMap = [
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0]
-];
+let map = [];
+let horizontal = [];
+let diagonalMap = [ [] ];
 
-function createField() {
+let numColunas = 7; 
+let numLinhas = 6; 
+
+function createField(column, quad) {
     const fieldSection = document.createElement('section')
     fieldSection.id = 'field'
 
     body.appendChild(fieldSection)
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < column; i++) {
         const createColumn = document.createElement('section')
         createColumn.classList = 'column'
         createColumn.id = `${i}`
         fieldSection.appendChild(createColumn)
             //map
         map.push([i])
-        for (let j = 0; j < 6; j++) {
+        diagonalMap.push([i])
+        for (let j = 0; j < quad; j++) {
             const createQuad = document.createElement('div')
             createQuad.classList = 'cell'
             createQuad.dataset.pos = `${i}-${j}`
@@ -77,13 +73,15 @@ function createField() {
 
             //map
             map[i][j] = `${i}-${j}`
-
+            diagonalMap[i][j] = `${i}-${j}`
         }
     }
 }
-createField()
+
+createField(numColunas, numLinhas)
 body.appendChild(footer)
 footer.appendChild(timer)
+
 setInterval(function() {
         playerSignTurn.style.animationName = "none"
         time--;
@@ -94,8 +92,11 @@ setInterval(function() {
         if (time === 0) {
             time = 30
         }
-    }, 1000)
+}, 1000)
     // Pedro
+
+
+// Pedro
 const test = document.querySelectorAll('.column')
 let lastChild
 
@@ -114,15 +115,21 @@ function adicionandoBall() {
     for (let i = 0; i < test.length; i++) {
         test[i].addEventListener('click', function(evt) {
             createBall(test[i])
-            victoryVertical(map[i])
-            victoryDiagonal()
-            for (let i = 0; i < horizontal.length; i++) {
-                victoryHorizontal(horizontal[i])
-
+            
+            if( victoryVertical(map[i]) ){
+                console.log(`${lastPlayer} ganhou Vertical`)
+            }
+            if( victoryDiagonal() ){
+                console.log(`${lastPlayer} ganhou Diagonal`)
+            }
+            if( victoryArrayHorizontal() ){
+                console.log(`${lastPlayer} ganhou Horizontal`)
+            }
+            if( tie() ){
+                console.log(`Empate`)
             }
         })
     }
-
 }
 adicionandoBall()
 
@@ -137,7 +144,6 @@ function createBall(x) {
             const discA = document.createElement("div");
             discA.classList.add("discA-style");
             lastChild.appendChild(discA);
-            // chamar funções de checar vitória e empate
             playerSignTurn.classList = 'discB-style'
             currentPlayer = 2;
             lastPlayer = 1
@@ -152,11 +158,11 @@ function createBall(x) {
             const discB = document.createElement("div");
             discB.classList.add("discB-style");
             lastChild.appendChild(discB);
-            // chamar funções de checar vitória e empate
             playerSignTurn.classList = 'discA-style'
             currentPlayer = 1;
             lastPlayer = 2
-                //map
+            
+            //map
             diagonalMap[lastChild.id[0]][lastChild.id[2]] = "blue"
             map[lastChild.id[0]][lastChild.id[2]] = "blue"
             horizontal[lastChild.id[2]][lastChild.id[0]] = "blue"
@@ -179,7 +185,7 @@ function victoryVertical(array) {
             countV++
         }
         if (4 == countV) {
-            console.log(`${lastPlayer} ganhou Vertical`)
+            return true
         }
     }
 }
@@ -193,71 +199,87 @@ function victoryHorizontal(array) {
         } else {
             countB++
         }
-
         if (countB == 4) {
-
-            console.log(`${lastPlayer} ganhou Horizontal`)
+            return true
         }
     }
 }
 
-function arrHorizontal() {
+function arrHorizontal(nLinha, nColuna) {
 
-    for (let linha = 0; linha < 6; linha++) {
+    for (let linha = 0; linha < nLinha; linha++) {
         horizontal.push([linha])
-        for (let coluna = 0; coluna < 7; coluna++) {
+        for (let coluna = 0; coluna < nColuna; coluna++) {
             horizontal[linha][coluna] = map[coluna][linha]
         }
     }
 }
-arrHorizontal()
+arrHorizontal(numLinhas, numColunas)
 
+function victoryArrayHorizontal(){
+    for (let i = 0; i < horizontal.length; i++) {
+       if( victoryHorizontal(horizontal[i]) ){
+           return true
+       }
+    }
+}
+
+const nPlayers = ['red', 'blue']
 
 function victoryDiagonal() {
 
     const edgeX = diagonalMap[0].length - 2;
     const edgeY = diagonalMap.length - 2;
-    console.log(diagonalMap)
-    for (let i = 0; i < edgeY; i++) {
-        for (let j = 0; j < edgeX; j++) {
-            let cell = diagonalMap[i][j];
-            if (cell === 'red') {
-                if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
-                    console.log('victory')
-                }
-            }
-        }
-    }
-    for (let i = 2; i < diagonalMap.length; i++) {
-        for (let j = 0; j < edgeX; j++) {
-            let cell = diagonalMap[i][j];
-            if (cell === 'red') {
-                if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
-                    console.log('victory')
-                }
-            }
-        }
-    }
 
-    for (let i = 0; i < edgeY.length; i++) {
-        for (let j = 0; j < edgeX; j++) {
-            let cell = diagonalMap[i][j];
-            if (cell === 'blue') {
-                if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
-                    console.log('victory')
+    for(let p = 0; p <= 1; p++){
+        for (let i = 0; i < edgeY; i++) {
+            for (let j = 0; j < edgeX; j++) {
+                let cell = diagonalMap[i][j];
+                if (cell === nPlayers[p]) {
+                    if (cell === diagonalMap[i + 1][j + 1] && cell === diagonalMap[i + 2][j + 2] && cell === diagonalMap[i + 3][j + 3]) {
+                        return true
+                    }
+                }
+            }
+        }
+        for (let i = 2; i < diagonalMap.length; i++) {
+            for (let j = 0; j < edgeX; j++) {
+                let cell = diagonalMap[i][j];
+                if (cell === nPlayers[p]) {
+                    if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
+                        return true
+                    }
                 }
             }
         }
     }
-    for (let i = 2; i < diagonalMap.length; i++) {
-        for (let j = 0; j < edgeX; j++) {
-            let cell = diagonalMap[i][j];
-            if (cell === 'blue') {
-                if (cell === diagonalMap[i - 1][j + 1] && cell === diagonalMap[i - 2][j + 2] && cell === diagonalMap[i - 3][j + 3]) {
-                    console.log('victory')
-                }
-            }
-        }
-    }
-
 }
+
+const cell = document.getElementsByClassName('cell')
+
+function tie(){
+    let count = 0
+    for(let i = 0; i < cell.length; i ++){
+        if(cell[i].childElementCount == 1){
+            count ++
+        }
+        if(count == cell.length){
+            return true
+        }
+    }    
+}
+
+function reset(){
+    const btnReset = document.createElement('button')
+    btnReset.innerText = 'Restart'
+    body.appendChild(btnReset)
+
+    btnReset.addEventListener('click', () =>{
+        for(let i = 0; i < cell.length; i ++){
+            cell[i].innerHTML = ""
+        }
+    }) 
+    
+}
+reset()
+
