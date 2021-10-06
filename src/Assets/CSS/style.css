@@ -23,7 +23,7 @@
 }
 
 footer header #roll {
-    animation: roll 1s;
+    animation: roll 1.5s;
 }
 
 
@@ -142,13 +142,7 @@ footer {
     }
     body {
         background-image: url('/src/Assets/Img/desktopBG.jpg');
-        background-size: 100vw 100vh;
-        background-repeat: no-repeat;
-        margin-top: 100px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        margin: 0;
     }
     header {
         display: flex;
