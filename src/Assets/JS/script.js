@@ -93,8 +93,6 @@ setInterval(function() {
             time = 30
         }
 }, 1000)
-    // Pedro
-
 
 // Pedro
 const test = document.querySelectorAll('.column')
@@ -110,6 +108,10 @@ function addBall(a) {
 }
 
 // Inti
+score1 = 0
+score2= 0
+const field = document.getElementById('field')
+
 
 function adicionandoBall() {
     for (let i = 0; i < test.length; i++) {
@@ -117,13 +119,36 @@ function adicionandoBall() {
             createBall(test[i])
             
             if( victoryVertical(map[i]) ){
-                console.log(`${lastPlayer} ganhou Vertical`)
+                if(lastPlayer == 1){
+                    score1++
+                    player1Points.innerText = `Placar:${score1}`
+                }
+                if(lastPlayer == 2){
+                    score2 ++
+                    player2Points.innerText = `Placar:${score2}`
+                }
             }
             if( victoryDiagonal() ){
-                console.log(`${lastPlayer} ganhou Diagonal`)
+                if(lastPlayer == 1){
+                    score1++
+                    player1Points.innerText = `Placar:${score1}`
+                }
+                if(lastPlayer == 2){
+                    score2 ++
+                    player2Points.innerText = `Placar:${score2}`
+
+                }
+                
             }
             if( victoryArrayHorizontal() ){
-                console.log(`${lastPlayer} ganhou Horizontal`)
+                if(lastPlayer == 1){
+                    score1++
+                    player1Points.innerText = `Placar:${score1}`
+                }
+                if(lastPlayer == 2){
+                    score2 ++
+                    player2Points.innerText = `Placar:${score2}`
+                }
             }
             if( tie() ){
                 console.log(`Empate`)
