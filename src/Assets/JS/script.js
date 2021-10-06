@@ -1,3 +1,63 @@
+// INTI - COMEÇO
+const initialScreen = document.querySelector(".initial-screen");
+initialScreen.classList.add("initial-screen");
+
+const boxSelectionModes = document.createElement("div");
+boxSelectionModes.classList.add("box-selection");
+boxSelectionModes.textContent = "Escolha qual nível quer jogar:";
+initialScreen.appendChild(boxSelectionModes);
+
+const easyMode = document.createElement("button");
+const normalMode = document.createElement("button");
+const hardMode = document.createElement("button");
+
+easyMode.classList.add("btn-select");
+normalMode.classList.add("btn-select");
+hardMode.classList.add("btn-select");
+
+easyMode.id = "easy";
+normalMode.id = "normal";
+hardMode.id = "hard";
+
+easyMode.textContent = "Fácil";
+normalMode.textContent = "Médio";
+hardMode.textContent = "Difícil";
+
+const btnFlex = document.createElement("div");
+btnFlex.classList.add("btn-mobile");
+boxSelectionModes.appendChild(btnFlex);
+
+btnFlex.appendChild(easyMode);
+btnFlex.appendChild(normalMode);
+btnFlex.appendChild(hardMode);
+
+let numColunas;
+let numLinhas;
+
+boxSelectionModes.addEventListener("click", (evt) => {
+  let selectedMode = evt.target.id;
+
+  if (selectedMode === "easy") {
+    numColunas = 5;
+    numLinhas = 4;
+  }
+  if (selectedMode === "normal") {
+    numColunas = 7;
+    numLinhas = 6;
+  }
+  if (selectedMode === "hard") {
+    numColunas = 10;
+    numLinhas = 7;
+  }
+  createField(numColunas, numLinhas)
+
+  // chamar função de reproduzir a musica tema do jogo
+  initialScreen.classList.remove("initial-screen");
+  initialScreen.classList.add("initial-none");
+});
+// INTI - FINAL
+
+
 //Sid
 const body = document.getElementById('body')
 const header = document.createElement('header')
@@ -45,8 +105,8 @@ let map = [];
 let horizontal = [];
 let diagonalMap = [ [] ];
 
-let numColunas = 7;
-let numLinhas = 6;
+// let numColunas = 7;
+// let numLinhas = 6;
 
 const fieldSection = document.createElement('section')
 fieldSection.id = 'field'
@@ -87,7 +147,7 @@ function createMap(numColunas, numLinhas) {
 
 }
 
-createField(numColunas, numLinhas)
+// createField(numColunas, numLinhas)
 body.appendChild(footer)
 footer.appendChild(timer)
 
@@ -133,6 +193,7 @@ const field = document.getElementById('field')
 function adicionandoBall() {
     for (let i = 0; i < test.length; i++) {
         test[i].addEventListener('click', function(evt) {
+            console.log('opa')
             createBall(test[i])
             
             if( victoryVertical(map[i]) ){
