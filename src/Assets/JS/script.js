@@ -164,6 +164,7 @@ function victorious() {
     } else {
         win.id = 'ironWin'
     }
+
     win.style.display = 'flex'
     setTimeout(() => {
         win.style.display = 'none'
@@ -315,7 +316,16 @@ function tie() {
             return true
         }
     }
+    win.style.display = 'flex'
+    win.id = "draw"
+    setTimeout(function() {
+        win.style.display = 'none'
+    }, 1500)
+    time = 31
+
 }
+
+
 
 function reset() {
     const btnReset = document.createElement('button')

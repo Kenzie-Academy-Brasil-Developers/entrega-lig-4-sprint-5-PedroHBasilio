@@ -74,6 +74,10 @@ header {
     animation: fadeIn 1s;
 }
 
+#draw {
+    background-image: url('/src/Assets/Img/empate.gif');
+}
+
 #capWin {
     background-image: url('/src/Assets/Img/CapitãoWin.gif');
 }
