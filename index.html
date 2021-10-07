@@ -6,37 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="src/Assets/CSS/style.css">
+    
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    
+
+    <link rel="stylesheet" href="src/Assets/CSS/style.css">
+
     <title>Lig 4</title>
 </head>
 
 <body id='body'>
     <!-- Inti -->
 
-    <div class="initial-screen initial-none">
+    <div class="initial-screen" id="tela-inicial">
 
         <h1 class="team-title">H4CK3R GUY5</h1>
 
         <h2 class="team-title">LIG-4 GAME</h2>
        
-        <p>COMO JOGAR:</p>
+        <div id="btn_box">
+            <button id="easy" class="btn-select">Easy</button>
+            <!-- <button id="normal" class="btn-select">Normal</button>
+            <button id="hard" class="btn-select">Hard</button> -->
+        </div>
         
-        <ol>
-            <li>Cada jogador deverá escolher uma das colunas do tabuleiro.</li>
-            <li>Ao clicar na coluna escolhida, um disco será colocado na última posição vazia de baixo para cima.</li>
-            <li>Vence o jogo o primeiro jogador que completar uma linha de 4 discos, seja verticalmente, horizontalmente ou diagonalmente.</li>
-            <li>Caso todas as posições vazias das colunas do tabuleiro sejam preenchidas e não haja formado uma linha de 4 discos do mesmo tipo,
-                o jogo será considerado empatado.
-            </li>
-        </ol>
-        
-    </div>
+    </div> 
 
     <!-- Pedro -->
 
@@ -47,7 +43,7 @@
         <source src="src/Assets/Sounds/IntroAudio.mp3" type="audio/ogg"> 
         <source src="src/Assets/Sounds/IntroAudio.mp3" type="audio/mpeg"> 
     </audio>
-    <audio id="bgSound" autoplay loop>
+    <audio id="bgSound">
         <source src="src/Assets/Sounds/bgSound.mp3" type="audio/ogg"> 
         <source src="src/Assets/Sounds/bgSound.mp3" type="audio/mpeg"> 
     </audio>
@@ -59,7 +55,7 @@
         <source src="src/Assets/Sounds/CapTaunt.mp3" type="audio/ogg"> 
         <source src="src/Assets/Sounds/CapTaunt.mp3" type="audio/mpeg"> 
     </audio>
-    <script src="src/Assets/JS/script.js"></script>
+    <script src="./src/Assets/JS/script.js"></script>
 </body>
 
 </html>

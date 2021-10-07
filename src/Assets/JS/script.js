@@ -1,62 +1,25 @@
-// INTI - COMEÇO
-const initialScreen = document.querySelector(".initial-screen");
-initialScreen.classList.add("initial-screen");
+//INTI - COMEÇO
 
-const boxSelectionModes = document.createElement("div");
-boxSelectionModes.classList.add("box-selection");
-boxSelectionModes.textContent = "Escolha qual nível quer jogar:";
-initialScreen.appendChild(boxSelectionModes);
+const initialScreen = document.getElementById("tela-inicial");
+const btnBox = document.getElementById('btn_box');
+console.log(initialScreen)
 
-const easyMode = document.createElement("button");
-const normalMode = document.createElement("button");
-const hardMode = document.createElement("button");
+const easy = document.getElementById('easy')
+const normal = document.getElementById('normal')
+const hard = document.getElementById('hard')
 
-easyMode.classList.add("btn-select");
-normalMode.classList.add("btn-select");
-hardMode.classList.add("btn-select");
 
-easyMode.id = "easy";
-normalMode.id = "normal";
-hardMode.id = "hard";
+let numColunas = 7
+let numLinhas = 6
 
-easyMode.textContent = "Fácil";
-normalMode.textContent = "Médio";
-hardMode.textContent = "Difícil";
+easy.addEventListener('click', () =>{
+    // createField(7, 6)
+    // arrHorizontal(numLinhas, numColunas)
+    initialScreen.classList.add('initial-none')
+})
 
-const btnFlex = document.createElement("div");
-btnFlex.classList.add("btn-mobile");
-boxSelectionModes.appendChild(btnFlex);
 
-btnFlex.appendChild(easyMode);
-btnFlex.appendChild(normalMode);
-btnFlex.appendChild(hardMode);
-
-let numColunas;
-let numLinhas;
-
-boxSelectionModes.addEventListener("click", (evt) => {
-  let selectedMode = evt.target.id;
-
-  if (selectedMode === "easy") {
-    numColunas = 5;
-    numLinhas = 4;
-  }
-  if (selectedMode === "normal") {
-    numColunas = 7;
-    numLinhas = 6;
-  }
-  if (selectedMode === "hard") {
-    numColunas = 10;
-    numLinhas = 7;
-  }
-  createField(numColunas, numLinhas)
-
-  // chamar função de reproduzir a musica tema do jogo
-  initialScreen.classList.remove("initial-screen");
-  initialScreen.classList.add("initial-none");
-});
-// INTI - FINAL
-
+//INTI - FINAL
 
 //Sid
 const body = document.getElementById('body')
@@ -128,8 +91,8 @@ function createField(column, quad) {
         }
     }
     createMap(column, quad)
-
 }
+createField(numColunas, numLinhas)
 
 function createMap(numColunas, numLinhas) {
 
@@ -144,7 +107,6 @@ function createMap(numColunas, numLinhas) {
             diagonalMap[i][j] = `${i}-${j}`
         }
     }
-
 }
 
 // createField(numColunas, numLinhas)
@@ -192,8 +154,8 @@ const field = document.getElementById('field')
 
 function adicionandoBall() {
     for (let i = 0; i < test.length; i++) {
-        test[i].addEventListener('click', function(evt) {
-            console.log('opa')
+        console.log(test)
+        test[i].addEventListener('click', function(evt){
             createBall(test[i])
             
             if( victoryVertical(map[i]) ){
@@ -230,8 +192,15 @@ function adicionandoBall() {
                 }
                 victorious()
             }
-            if (tie()) {
-                console.log(`Empate`)
+            if ( tie() ) {
+                setTimeout(function() {
+                    win.style.display = 'flex'
+                }, 1500)
+                win.id = "draw"
+                setTimeout(function() {
+                    win.style.display = 'none'
+                }, 1500)
+                time = 31
             }
         })
     }
@@ -239,18 +208,41 @@ function adicionandoBall() {
 adicionandoBall()
 
 function victorious() {
-    if (lastPlayer === 1) {
+    if(lastPlayer === 1 && score1 === 3){
+        win.id = 'capConsecutiveWin'
+    }
+    else if(lastPlayer === 2 && score2 === 3){
+        win.id = 'ironConsecutiveWin'
+    }
+    else if (lastPlayer === 1) {
         win.id = 'capWin'
     } else {
         win.id = 'ironWin'
     }
 
-    win.style.display = 'flex'
-    setTimeout(() => {
-        win.style.display = 'none'
-    }, 2000, )
-
-    resetBoard()
+    if(win.id === 'ironConsecutiveWin'){
+        setTimeout(function() {
+            win.style.display = 'flex'
+        }, 800)
+        setTimeout(() => {
+            win.style.display = 'none'
+        }, 4000, )
+        setTimeout(function() {
+            resetBoard()
+        }, 800)
+    }
+    else{
+        setTimeout(function() {
+            win.style.display = 'flex'
+        }, 800)
+        setTimeout(() => {
+            win.style.display = 'none'
+        }, 3000, )
+        
+        setTimeout(function() {
+            resetBoard()
+        }, 800)
+    }
 }
 let currentPlayer = 1;
 let lastPlayer = 2
@@ -392,17 +384,11 @@ function tie() {
         if (cell[i].childElementCount == 1) {
             count++
         }
-        if (count == cell.length) {
+        console.log(count)
+        if (count == cell.length) {    
             return true
         }
     }
-    win.style.display = 'flex'
-    win.id = "draw"
-    setTimeout(function() {
-        win.style.display = 'none'
-    }, 1500)
-    time = 31
-
 }
 
 
@@ -417,6 +403,10 @@ function reset() {
             cell[i].innerHTML = ""
         }
         time = 31
+        score2 = 0
+        score1 = 0
+        player1Points.innerText = `Placar:${score1}`
+        player2Points.innerText = `Placar:${score2}`
     })
 
 }
