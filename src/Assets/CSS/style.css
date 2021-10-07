@@ -52,6 +52,10 @@
 }
 
 #blur>ol>li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     padding: 10px 0;
     color: whitesmoke;
     text-shadow: 3px 5px 2px black;
@@ -167,21 +171,26 @@ body {
 
 #draw {
     background-image: url('/src/Assets/Img/empate.gif');
+    z-index: 3;
 }
 
 #capWin {
+    z-index: 3;
     background-image: url('/src/Assets/Img/CapitãoWin.gif');
 }
 
 #ironWin {
+    z-index: 3;
     background-image: url('/src/Assets/Img/IRWin.gif');
 }
 
 #capConsecutiveWin {
+    z-index: 3;
     background-image: url('/src/Assets/Img/CapitãoConsecutiveWin.gif');
 }
 
 #ironConsecutiveWin {
+    z-index: 3;
     background-image: url('/src/Assets/Img/tonyConsecutiveWin.gif');
 }
 
@@ -230,52 +239,9 @@ footer {
     }
     .initial-screen {
         display: flex;
-        /* width: 2re,;
-        height: 100%;
-        color: white; */
     }
     #blur {
         padding-top: 5%;
-        position: absolute;
-        /* width: 80%;
-        height: 80%; */
-    }
-    #blur>p {
-        font-weight: 800;
-        font-size: 1.5rem;
-        text-align: center;
-        padding-top: 10px;
-    }
-    #blur>ol {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        list-style: none;
-        text-align: center;
-        margin: 0 14%;
-        padding-left: 0;
-        max-width: 430px;
-    }
-    #blur>ol>li {
-        font-size: 1em;
-        margin-top: 2%;
-    }
-    .btn-mobile {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        column-gap: 10px;
-    }
-    .btn-select {
-        width: 70px;
-        height: 30px;
-        margin-top: 10px;
-        background: rgb(0, 0, 0);
-        font-weight: 700;
-        color: brown;
-        border-radius: 15px;
-        box-shadow: 3px 3px 5px 0px rgb(0 0 0 / 55%);
     }
     .box-selection:focus {
         color: turquoise;
@@ -304,27 +270,17 @@ footer {
     #play2 {
         font-size: 30px;
     }
-    #field {
-        display: flex;
-        justify-content: center;
-        flex-direction: row-reverse;
-        align-items: center;
-    }
     .cell {
         width: 4em;
         height: 4em;
         border: 5px double black;
-    }
-    .column {
-        display: flex;
-        flex-direction: column-reverse;
     }
     .column:hover {
         transform: scale(1.05);
         transition: 1s;
     }
     .win {
-        background-size: 50vw 75vh;
+        background-size: 50% 75%;
     }
     #reset:hover {
         background-color: rgb(118, 118, 212);
