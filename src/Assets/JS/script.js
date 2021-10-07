@@ -148,9 +148,11 @@ setInterval(function () {
     if (currentPlayer === 1) {
       currentPlayer = 2;
       playerSignTurn.classList = "discB-style";
+      playerSignTurn.classList.add("discB-turn-border");
     } else {
       currentPlayer = 1;
       playerSignTurn.classList = "discA-style";
+      playerSignTurn.classList.add("discA-turn-border");
     }
     time = 30;
   }

@@ -35,7 +35,7 @@ h2.team-title {
     background-repeat: no-repeat;
     z-index: 3;
     width: 100vw;
-    height: 100vh;
+    height: 105%;
     color: white;
     position: absolute;
     top: 0;
@@ -47,7 +47,7 @@ h2.team-title {
   align-items: center;
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 105%;
   backdrop-filter: blur(10px);
 }
 
@@ -142,7 +142,7 @@ footer header #roll {
 
 body {
     background-image: url("../Img/mobileBG.jpg");
-    background-size: 100vw 100vh;
+    background-size: 100vw 100%;
     background-repeat: no-repeat;
     margin-top: 100px;
     display: flex;
@@ -275,7 +275,7 @@ footer {
     body {
         background-image: url('../Img/desktopBG.jpg');
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         margin: 0;
     }
     header {
