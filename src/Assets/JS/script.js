@@ -31,7 +31,6 @@ boxSelectionModes.appendChild(btnFlex);
 btnFlex.appendChild(normalMode);
 // btnFlex.appendChild(hardMode);
 
-const bgSound = document.getElementById("intro");
 
 let numColunas = 7;
 let numLinhas = 6;
@@ -62,6 +61,8 @@ let numLinhas = 6;
 
 normalMode.addEventListener("click", (evt) => {
     let confirma = evt.target;
+    const bgSound = document.getElementById("bgSound");
+    bgSound.play()
     const taunt = document.getElementById("intro");
     taunt.play();
     if (confirma.id === "normal") {
@@ -203,7 +204,8 @@ let consectiveIron = 0;
 const field = document.getElementById("field");
 
 function adicionandoBall() {
-    bgSound.play()
+    // const bgSound = document.getElementById("intro");
+    // bgSound.play()
     for (let i = 0; i < test.length; i++) {
         test[i].addEventListener('click', function(evt) {
             createBall(test[i])
