@@ -219,7 +219,7 @@ function adicionandoBall() {
                     score2++
                     consectiveCap = 0
                     consectiveIron++
-                    player2Points.innerText = `teamiron:${score2}`
+                    player2Points.innerText = `TeamIron:${score2}`
 
                 }
                 victorious()
@@ -239,7 +239,7 @@ function adicionandoBall() {
                     score2++
                     consectiveCap = 0
                     consectiveIron++
-                    player2Points.innerText = `teamiron:${score2}`
+                    player2Points.innerText = `TeamIron:${score2}`
 
                 }
                 victorious()
@@ -257,7 +257,7 @@ function adicionandoBall() {
                     score2++
                     consectiveCap = 0
                     consectiveIron++
-                    player2Points.innerText = `teamIron:${score2}`
+                    player2Points.innerText = `TeamIron:${score2}`
 
                 }
                 victorious()
