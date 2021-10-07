@@ -490,8 +490,8 @@ function reset() {
         time = 31
         score2 = 0
         score1 = 0
-        player1Points.innerText = `Placar:${score1}`
-        player2Points.innerText = `Placar:${score2}`
+        player1Points.innerText = `teamCap:${score1}`
+        player2Points.innerText = `teamIron:${score2}`
     })
 }
 reset();
