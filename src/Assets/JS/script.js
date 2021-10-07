@@ -1,7 +1,7 @@
 // INTI - COMEÇO
 const initialScreen = document.querySelector(".initial-screen");
 initialScreen.classList.add("initial-screen");
-const teste = document.querySelector("#teste");
+const teste = document.querySelector("#blur");
 const boxSelectionModes = document.createElement("div");
 boxSelectionModes.classList.add("box-selection");
 boxSelectionModes.textContent = "Escolha qual nível quer jogar:";
@@ -148,7 +148,7 @@ function createField(column, quad) {
         }
     }
     createMap(column, quad)
-    bgSound.play()
+
 }
 createField(numColunas, numLinhas)
 easy.addEventListener('click', () => {
@@ -209,6 +209,7 @@ let consectiveIron = 0
 const field = document.getElementById('field')
 
 function adicionandoBall() {
+    bgSound.play()
     for (let i = 0; i < test.length; i++) {
         test[i].addEventListener('click', function(evt) {
             createBall(test[i])
@@ -225,7 +226,7 @@ function adicionandoBall() {
                     consectiveCap = 0
                     consectiveIron++
                     player2Points.innerText = `Placar:${score2}`
-                        // scoreArr.push(2)
+
                 }
                 victorious()
                 console.log(consectiveCap)
@@ -245,7 +246,7 @@ function adicionandoBall() {
                     consectiveCap = 0
                     consectiveIron++
                     player2Points.innerText = `Placar:${score2}`
-                        // scoreArr.push(2)
+
                 }
                 victorious()
                 console.log('diagonal')
@@ -263,21 +264,26 @@ function adicionandoBall() {
                     consectiveCap = 0
                     consectiveIron++
                     player2Points.innerText = `Placar:${score2}`
-                        //scoreArr.push(2)
+
                 }
                 victorious()
                 console.log('Horizontal')
             }
 
             if (tie()) {
+                win.id = "draw"
                 setTimeout(function() {
                     win.style.display = 'flex'
                 }, 1500)
-                win.id = "draw"
+
                 setTimeout(function() {
                     win.style.display = 'none'
-                }, 1500)
+                }, 3000)
                 time = 31
+                setTimeout(function() {
+                    resetBoard()
+                }, 2500)
+
             }
         })
         console.log(consectiveCap)
@@ -476,6 +482,7 @@ function tie() {
 
 function reset() {
     const btnReset = document.createElement('button')
+    btnReset.id = "reset"
     btnReset.innerText = 'Restart'
     body.appendChild(btnReset)
     btnReset.addEventListener('click', () => {
