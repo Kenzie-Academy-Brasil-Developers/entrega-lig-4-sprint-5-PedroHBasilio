@@ -236,9 +236,9 @@ footer {
     .initial-screen {
         display: flex;
     }
-    #blur {
+    /* #blur {
         padding-top: 5%;
-    }
+    } */
     .box-selection:focus {
         color: turquoise;
         background: brown;
