@@ -28,17 +28,17 @@ h2.team-title {
 }
 
 .initial-screen {
-  display: flex;
-  background-image: url("/src/Assets/Img/bgStartScreen.jpg");
-  background-position: center;
-  background-size: 100vw 100vh;
-  background-repeat: no-repeat;
-  z-index: 3;
-  width: 100vw;
-  height: 100vh;
-  color: white;
-  position: absolute;
-  top: 0;
+    display: flex;
+    background-image: url("../Img/bgStartScreen.jpg");
+    background-position: center;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    position: absolute;
+    top: 0;
 }
 
 #blur {
@@ -102,34 +102,34 @@ h2.team-title {
 }
 
 .discA-style {
-  display: flex;
-  align-self: center;
-  width: 50px;
-  height: 50px;
-  background-image: url("/src/Assets/Img/Captain_America_Shield.png");
-  background-size: 50px 50px;
-  border-radius: 100%;
-  animation: throwIronMan 1s;
+    display: flex;
+    align-self: center;
+    width: 50px;
+    height: 50px;
+    background-image: url("../Img/Captain_America_Shield.png");
+    background-size: 50px 50px;
+    border-radius: 100%;
+    animation: throwIronMan 1s;
 }
 
 .discB-style {
-  display: flex;
-  align-self: center;
-  width: 50px;
-  height: 50px;
-  background-image: url("/src/Assets/Img/iron-man-helmet-3D-model_600.jpg");
-  background-size: 50px 50px;
-  border-radius: 100%;
-  animation: throwCaptain 1s;
+    display: flex;
+    align-self: center;
+    width: 50px;
+    height: 50px;
+    background-image: url("../Img/iron-man-helmet-3D-model_600.jpg");
+    background-size: 50px 50px;
+    border-radius: 100%;
+    animation: throwCaptain 1s;
 }
 
 .discA-turn-border {
   border: 3px solid red;
-  margin-bottom: 30px;
+  margin-top: 30px;
 }
 .discB-turn-border {
   border: 3px solid blue;
-  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 footer header #roll {
@@ -141,14 +141,14 @@ footer header #roll {
 /* Sid */
 
 body {
-  background-image: url("/src/Assets/Img/mobileBG.jpg");
-  background-size: 100vw 100vh;
-  background-repeat: no-repeat;
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    background-image: url("../Img/mobileBG.jpg");
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #score {
@@ -178,28 +178,28 @@ body {
 }
 
 #draw {
-  background-image: url("/src/Assets/Img/empate.gif");
-  z-index: 3;
+    background-image: url('../Img/empate.gif');
+    z-index: 3;
 }
 
 #capWin {
-  z-index: 3;
-  background-image: url("/src/Assets/Img/CapitãoWin.gif");
+    z-index: 3;
+    background-image: url('../Img/CapitãoWin.gif');
 }
 
 #ironWin {
-  z-index: 3;
-  background-image: url("/src/Assets/Img/IRWin.gif");
+    z-index: 3;
+    background-image: url('../Img/IRWin.gif');
 }
 
 #capConsecutiveWin {
-  z-index: 3;
-  background-image: url("/src/Assets/Img/CapitãoConsecutiveWin.gif");
+    z-index: 3;
+    background-image: url('../Img/CapitãoConsecutiveWin.gif');
 }
 
 #ironConsecutiveWin {
-  z-index: 3;
-  background-image: url("/src/Assets/Img/tonyConsecutiveWin.gif");
+    z-index: 3;
+    background-image: url('../Img/tonyConsecutiveWin.gif');
 }
 
 header {
@@ -241,61 +241,68 @@ footer {
   border-radius: 15px;
 }
 
-@media screen and (min-width: 700px) {
-  .initial-none {
-    display: none;
-  }
-  .initial-screen {
-    display: flex;
-  }
-  #blur {
-    padding-top: 5%;
-  }
-  .box-selection:focus {
-    color: turquoise;
-    background: brown;
-  }
-  .discA-style {
-    width: 4em;
-    height: 4em;
-    background-size: 4em;
-  }
-  .discB-style {
-    width: 4em;
-    height: 4em;
-    background-size: 4em;
-  }
-  body {
-    background-image: url("/src/Assets/Img/desktopBG.jpg");
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-  }
-  header {
-    color: rgb(235, 66, 66);
-  }
-  #play1,
-  #play2 {
-    font-size: 30px;
-  }
-  .cell {
-    width: 4em;
-    height: 4em;
-    border: 5px double black;
-  }
-  .column:hover {
-    transform: scale(1.05);
-    transition: 1s;
-  }
-  .win {
-    background-size: 50% 75%;
-  }
-  #reset:hover {
-    background-color: rgb(118, 118, 212);
-    color: white;
-    border-radius: 15px;
-    transition: 1s;
-  }
+@media screen and (min-width:700px) {
+    .initial-none {
+        display: none;
+    }
+    .initial-screen {
+        display: flex;
+    }
+    /* #blur {
+        padding-top: 5%;
+    } */
+    .box-selection:focus {
+        color: turquoise;
+        background: brown;
+    }
+    .discA-style {
+        width: 4em;
+        height: 4em;
+        background-size: 4em;
+    }
+    .discB-style {
+        width: 4em;
+        height: 4em;
+        background-size: 4em;
+    }
+    .discA-turn-border {
+        margin-bottom: 30px;
+    }
+    .discB-turn-border {
+        margin-bottom: 30px;
+      }
+
+    body {
+        background-image: url('../Img/desktopBG.jpg');
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+    }
+    header {
+        color: rgb(235, 66, 66);
+    }
+    #play1,
+    #play2 {
+        font-size: 30px;
+    }
+    .cell {
+        width: 4em;
+        height: 4em;
+        border: 5px double black;
+    }
+    .column:hover {
+        transform: scale(1.05);
+        transition: 1s;
+    }
+    .win {
+        background-size: 50% 75%;
+    }
+    #reset:hover {
+        background-color: rgb(118, 118, 212);
+        color: white;
+        border-radius: 15px;
+        transition: 1s;
+    }
 }
 
 @keyframes throwCaptain {
