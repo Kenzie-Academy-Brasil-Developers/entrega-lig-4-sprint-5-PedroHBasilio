@@ -1,323 +1,341 @@
 /* Inti */
 
 h1 {
-    margin-top: 60px;
+  margin-top: 60px;
 }
 
 .team-title {
-    background-image: linear-gradient( to left, rgb(73, 7, 7), rgb(229, 186, 186), rgb(32, 37, 116));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: "Press Start 2P", cursive;
-    -webkit-text-stroke: 3px rgb(0, 0, 0);
-    font-size: 2rem;
+  background-image: linear-gradient(
+    to left,
+    rgb(73, 7, 7),
+    rgb(229, 186, 186),
+    rgb(32, 37, 116)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Press Start 2P", cursive;
+  -webkit-text-stroke: 3px rgb(0, 0, 0);
+  font-size: 2rem;
 }
 
 h2.team-title {
-    font-size: 1.7rem;
+  font-size: 1.7rem;
 }
 
 .initial-none {
-    display: none;
+  display: none;
 }
 
 .initial-screen {
-    display: flex;
-    background-image: url("../Img/bgStartScreen.jpg");
-    background-position: center;
-    background-size: 100vw 100vh;
-    background-repeat: no-repeat;
-    z-index: 3;
-    width: 100vw;
-    height: 100vh;
-    color: white;
-    position: absolute;
-    top: 0;
+  display: flex;
+  background-image: url("../Img/bgStartScreen.jpg");
+  background-position: center;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  position: absolute;
+  top: 0;
 }
 
 #blur {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(10px);
 }
 
-#blur>p {
-    font-weight: 800;
-    font-size: 1.5rem;
-    text-align: center;
-    padding-top: 10px;
+#blur > p {
+  font-weight: 800;
+  font-size: 1.5rem;
+  text-align: center;
+  padding-top: 10px;
 }
 
-#blur>ol {
-    list-style: none;
-    text-align: center;
-    margin: 0 14%;
-    padding-left: 0;
-    max-width: 430px;
+#blur > ol {
+  list-style: none;
+  text-align: center;
+  margin: 0 14%;
+  padding-left: 0;
+  max-width: 430px;
 }
 
-#blur>ol>li {
-    padding: 10px 0;
-    color: whitesmoke;
-    text-shadow: 3px 5px 2px black;
-    font-size: 18px;
+#blur > ol > li {
+  padding: 10px 0;
+  color: whitesmoke;
+  text-shadow: 3px 5px 2px black;
+  font-size: 18px;
 }
 
 .box-selection {
-    margin-top: 35px;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 800;
 }
 
 .btn-mobile {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: 185px 185px;
+  margin-top: 10px;
 }
 
-.btn-select {
-    width: 135px;
-    height: 52px;
-    margin-top: 5px;
-    background: rgb(0, 0, 0);
-    font-weight: 900;
-    color: red;
-    font-size: 1.3rem;
-    border-radius: 30px;
-    box-shadow: 3px 3px 5px 0px rgb(0 0 0 / 55%);
-    border: 1px solid red;
+.btn-select-team1 {
+  width: 170px;
+  height: 35px;
+  margin-top: 12px;
+  background: blue;
+  font-weight: 900;
+  color: white;
+  font-size: 1rem;
+  border-radius: 30px;
+  box-shadow: 3px 3px 5px 0px rgb(0 0 0 / 55%);
+  border: 2px solid white;
 }
+
+.btn-select-team2 {
+  width: 170px;
+  height: 35px;
+  margin-top: 12px;
+  background: red;
+  font-weight: 900;
+  color: white;
+  font-size: 1rem;
+  border-radius: 30px;
+  box-shadow: 3px 3px 5px 0px rgb(0 0 0 / 55%);
+  border: 2px solid white;
 
 .box-selection:focus {
-    color: turquoise;
-    background: brown;
+  color: turquoise;
+  background: brown;
 }
 
 .discA-style {
-    display: flex;
-    align-self: center;
-    width: 50px;
-    height: 50px;
-    background-image: url("../Img/Captain_America_Shield.png");
-    background-size: 50px 50px;
-    border-radius: 100%;
-    animation: throwIronMan 1s;
+  display: flex;
+  align-self: center;
+  width: 50px;
+  height: 50px;
+  background-image: url("../Img/Captain_America_Shield.png");
+  background-size: 50px 50px;
+  border-radius: 100%;
+  animation: throwIronMan 1s;
 }
 
 .discB-style {
-    display: flex;
-    align-self: center;
-    width: 50px;
-    height: 50px;
-    background-image: url("../Img/iron-man-helmet-3D-model_600.jpg");
-    background-size: 50px 50px;
-    border-radius: 100%;
-    animation: throwCaptain 1s;
+  display: flex;
+  align-self: center;
+  width: 50px;
+  height: 50px;
+  background-image: url("../Img/iron-man-helmet-3D-model_600.jpg");
+  background-size: 50px 50px;
+  border-radius: 100%;
+  animation: throwCaptain 1s;
 }
 
 footer header #roll {
-    animation: roll 1.5s;
+  animation: roll 1.5s;
 }
 
-
 /* Pedro */
-
 
 /* Sid */
 
 body {
-    background-image: url("../Img/mobileBG.jpg");
-    background-size: 100vw 100vh;
-    background-repeat: no-repeat;
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background-image: url("../Img/mobileBG.jpg");
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #score {
-    display: flex;
-    width: 100vw;
-    justify-content: space-evenly;
-    color: ivory;
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+  color: ivory;
 }
 
 #play1 {
-    color: rgb(145, 168, 229);
+  color: rgb(145, 168, 229);
 }
 
 #play2 {
-    color: rgb(207, 43, 22);
+  color: rgb(207, 43, 22);
 }
 
 .win {
-    display: flex;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100vw 60vh;
-    animation: fadeIn 1s;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100vw 60vh;
+  animation: fadeIn 1s;
 }
 
 #draw {
-    background-image: url('../Img/empate.gif');
-    z-index: 3;
+  background-image: url("../Img/empate.gif");
+  z-index: 3;
 }
 
 #capWin {
-    z-index: 3;
-    background-image: url('../Img/CapitãoWin.gif');
+  z-index: 3;
+  background-image: url("../Img/CapitãoWin.gif");
 }
 
 #ironWin {
-    z-index: 3;
-    background-image: url('../Img/IRWin.gif');
+  z-index: 3;
+  background-image: url("../Img/IRWin.gif");
 }
 
 #capConsecutiveWin {
-    z-index: 3;
-    background-image: url('../Img/CapitãoConsecutiveWin.gif');
+  z-index: 3;
+  background-image: url("../Img/CapitãoConsecutiveWin.gif");
 }
 
 #ironConsecutiveWin {
-    z-index: 3;
-    background-image: url('../Img/tonyConsecutiveWin.gif');
+  z-index: 3;
+  background-image: url("../Img/tonyConsecutiveWin.gif");
 }
 
 header {
-    display: flex;
-    color: rgb(90, 97, 187);
-    justify-content: space-between;
+  display: flex;
+  color: rgb(90, 97, 187);
+  justify-content: space-between;
 }
 
 footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
 }
 
 #field {
-    display: flex;
-    justify-content: center;
-    flex-direction: row-reverse;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  align-items: center;
 }
 
 .cell {
-    width: 50px;
-    height: 50px;
-    border: 3px double rgb(219, 51, 51);
+  width: 50px;
+  height: 50px;
+  border: 3px double rgb(219, 51, 51);
 }
 
 .column {
-    display: flex;
-    flex-direction: column-reverse;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 #reset {
-    background-color: black;
-    color: red;
-    border-radius: 15px;
+  background-color: black;
+  color: red;
+  border-radius: 15px;
 }
 
-@media screen and (min-width:700px) {
-    .initial-none {
-        display: none;
-    }
-    .initial-screen {
-        display: flex;
-    }
-    /* #blur {
+@media screen and (min-width: 700px) {
+  .initial-none {
+    display: none;
+  }
+  .initial-screen {
+    display: flex;
+  }
+  /* #blur {
         padding-top: 5%;
     } */
-    .box-selection:focus {
-        color: turquoise;
-        background: brown;
-    }
-    .discA-style {
-        width: 4em;
-        height: 4em;
-        background-size: 4em;
-    }
-    .discB-style {
-        width: 4em;
-        height: 4em;
-        background-size: 4em;
-    }
-    body {
-        background-image: url('../Img/desktopBG.jpg');
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-    }
-    header {
-        color: rgb(235, 66, 66);
-    }
-    #play1,
-    #play2 {
-        font-size: 30px;
-    }
-    .cell {
-        width: 4em;
-        height: 4em;
-        border: 5px double black;
-    }
-    .column:hover {
-        transform: scale(1.05);
-        transition: 1s;
-    }
-    .win {
-        background-size: 50% 75%;
-    }
-    #reset:hover {
-        background-color: rgb(118, 118, 212);
-        color: white;
-        border-radius: 15px;
-        transition: 1s;
-    }
+  .box-selection:focus {
+    color: turquoise;
+    background: brown;
+  }
+  .discA-style {
+    width: 4em;
+    height: 4em;
+    background-size: 4em;
+  }
+  .discB-style {
+    width: 4em;
+    height: 4em;
+    background-size: 4em;
+  }
+  body {
+    background-image: url("../Img/desktopBG.jpg");
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+  }
+  header {
+    color: rgb(235, 66, 66);
+  }
+  #play1,
+  #play2 {
+    font-size: 30px;
+  }
+  .cell {
+    width: 4em;
+    height: 4em;
+    border: 5px double black;
+  }
+  .column:hover {
+    transform: scale(1.05);
+    transition: 1s;
+  }
+  .win {
+    background-size: 50% 75%;
+  }
+  #reset:hover {
+    background-color: rgb(118, 118, 212);
+    color: white;
+    border-radius: 15px;
+    transition: 1s;
+  }
 }
 
 @keyframes throwCaptain {
-    from {
-        transform: translateX(500px);
-    }
-    to {
-        transform: translateX(0px);
-    }
+  from {
+    transform: translateX(500px);
+  }
+  to {
+    transform: translateX(0px);
+  }
 }
 
 @keyframes throwIronMan {
-    from {
-        transform: translateX(-500px);
-    }
-    to {
-        transform: translateX(0px);
-    }
+  from {
+    transform: translateX(-500px);
+  }
+  to {
+    transform: translateX(0px);
+  }
 }
 
 @keyframes roll {
-    from {
-        transform: rotateY(180deg);
-    }
-    to {
-        transform: rotateY(0deg);
-    }
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 100%;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
 }
