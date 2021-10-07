@@ -24,7 +24,7 @@ h2.team-title {
 
 .initial-screen {
     display: flex;
-    background-image: url("./src/Assets/Img/bgStartScreen.jpg");
+    background-image: url("../Img/bgStartScreen.jpg");
     background-position: center;
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
@@ -101,7 +101,7 @@ h2.team-title {
     align-self: center;
     width: 50px;
     height: 50px;
-    background-image: url("./src/Assets/Img/Captain_America_Shield.png");
+    background-image: url("../Img/Captain_America_Shield.png");
     background-size: 50px 50px;
     border-radius: 100%;
     animation: throwIronMan 1s;
@@ -112,7 +112,7 @@ h2.team-title {
     align-self: center;
     width: 50px;
     height: 50px;
-    background-image: url("./src/Assets/Img/iron-man-helmet-3D-model_600.jpg");
+    background-image: url("../Img/iron-man-helmet-3D-model_600.jpg");
     background-size: 50px 50px;
     border-radius: 100%;
     animation: throwCaptain 1s;
@@ -129,7 +129,7 @@ footer header #roll {
 /* Sid */
 
 body {
-    background-image: url("./src/Assets/Img/mobileBG.jpg");
+    background-image: url("../Img/mobileBG.jpg");
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     margin-top: 100px;
@@ -166,28 +166,28 @@ body {
 }
 
 #draw {
-    background-image: url('./src/Assets/Img/empate.gif');
+    background-image: url('../Img/empate.gif');
     z-index: 3;
 }
 
 #capWin {
     z-index: 3;
-    background-image: url('./src/Assets/Img/CapitãoWin.gif');
+    background-image: url('../Img/CapitãoWin.gif');
 }
 
 #ironWin {
     z-index: 3;
-    background-image: url('./src/Assets/Img/IRWin.gif');
+    background-image: url('../Img/IRWin.gif');
 }
 
 #capConsecutiveWin {
     z-index: 3;
-    background-image: url('./src/Assets/Img/CapitãoConsecutiveWin.gif');
+    background-image: url('../Img/CapitãoConsecutiveWin.gif');
 }
 
 #ironConsecutiveWin {
     z-index: 3;
-    background-image: url('./src/Assets/Img/tonyConsecutiveWin.gif');
+    background-image: url('../Img/tonyConsecutiveWin.gif');
 }
 
 header {
@@ -254,7 +254,7 @@ footer {
         background-size: 4em;
     }
     body {
-        background-image: url('./src/Assets/Img/desktopBG.jpg');
+        background-image: url('../Img/desktopBG.jpg');
         width: 100vw;
         height: 100vh;
         margin: 0;
