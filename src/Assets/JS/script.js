@@ -1,80 +1,97 @@
 // INTI - COMEÇO
-const initialScreen = document.querySelector(".initial-screen")[0];
+const initialScreen = document.querySelector(".initial-screen");
 initialScreen.classList.add("initial-screen");
-
+const teste = document.querySelector("#teste");
 const boxSelectionModes = document.createElement("div");
 boxSelectionModes.classList.add("box-selection");
-boxSelectionModes.textContent = "Escolha qual nível quer jogar:";
-initialScreen.appendChild(boxSelectionModes);
+//boxSelectionModes.textContent = "Escolha qual nível quer jogar:";
+teste.appendChild(boxSelectionModes);
 
-const easyMode = document.createElement("button");
+// const easyMode = document.createElement("button");
 const normalMode = document.createElement("button");
-const hardMode = document.createElement("button");
+// const hardMode = document.createElement("button");
 
-easyMode.classList.add("btn-select");
+// easyMode.classList.add("btn-select");
 normalMode.classList.add("btn-select");
-hardMode.classList.add("btn-select");
+// hardMode.classList.add("btn-select");
 
-easyMode.id = "easy";
+// easyMode.id = "easy";
 normalMode.id = "normal";
-hardMode.id = "hard";
+// hardMode.id = "hard";
 
-easyMode.textContent = "Fácil";
-normalMode.textContent = "Médio";
-hardMode.textContent = "Difícil";
+// easyMode.textContent = "Fácil";
+normalMode.textContent = "JOGAR";
+// hardMode.textContent = "Difícil";
 
 const btnFlex = document.createElement("div");
 btnFlex.classList.add("btn-mobile");
 boxSelectionModes.appendChild(btnFlex);
 
-btnFlex.appendChild(easyMode);
+// btnFlex.appendChild(easyMode);
 btnFlex.appendChild(normalMode);
-btnFlex.appendChild(hardMode);
+// btnFlex.appendChild(hardMode);
 
-let numColunas;
-let numLinhas;
+const bgSound = document.getElementById("intro");
 
-boxSelectionModes.addEventListener("click", (evt) => {
-  let selectedMode = evt.target.id;
+let numColunas = 7;
+let numLinhas = 6;
 
-  if (selectedMode === "easy") {
-    numColunas = 5;
-    numLinhas = 4;
-  }
-  if (selectedMode === "normal") {
-    numColunas = 7;
-    numLinhas = 6;
-  }
-  if (selectedMode === "hard") {
-    numColunas = 10;
-    numLinhas = 7;
-  }
-  createField(numColunas, numLinhas);
+// boxSelectionModes.addEventListener("click", (evt) => {
+//     let selectedMode = evt.target.id;
 
-  // chamar função de reproduzir a musica tema do jogo
-  initialScreen.classList.remove("initial-screen");
-  initialScreen.classList.add("initial-none");
-});
+//     if (selectedMode === "easy") {
+//         numColunas = 5;
+//         numLinhas = 4;
+//     }
+//     if (selectedMode === "normal") {
+//         numColunas = 7;
+//         numLinhas = 6;
+//     }
+//     if (selectedMode === "hard") {
+//         numColunas = 10;
+//         numLinhas = 7;
+//     }
+//     createField(numColunas, numLinhas)
+
+//     // chamar função de reproduzir a musica tema do jogo
+//     initialScreen.classList.remove("initial-screen");
+//     initialScreen.classList.add("initial-none");
+
+// });
 // INTI - FINAL
 
+normalMode.addEventListener("click", (evt) => {
+  let confirma = evt.target;
+  const taunt = document.getElementById("intro");
+  taunt.play();
+  if (confirma.id === "normal") {
+    initialScreen.classList.remove("initial-screen");
+    initialScreen.classList.add("initial-none");
+  }
+});
 //Sid
 const body = document.getElementById("body");
 const header = document.createElement("header");
-const playerScore = document.createElement("section");
 const footer = document.createElement("footer");
+
+const playerScore = document.createElement("section");
 const playerTurn = document.createElement("h1");
 const player1Points = document.createElement("h2");
 const player2Points = document.createElement("h2");
+
 const timer = document.createElement("div");
 const win = document.createElement("div");
 win.classList = "win";
 win.style.display = "none";
+
 let playerSignTurn = document.createElement("div");
+playerSignTurn.classList = "discA-style";
+playerSignTurn.id = "roll";
+
 playerScore.id = "score";
 player1Points.id = "play1";
 player2Points.id = "play2";
-playerSignTurn.classList = "discA-style";
-playerSignTurn.id = "roll";
+
 let currentPointP1 = 0;
 let currentPointP2 = 0;
 let time = 30;
@@ -82,8 +99,8 @@ body.appendChild(win);
 
 function createHud() {
   playerTurn.innerText = `Turno:`;
-  player1Points.innerText = `Placar: ${currentPointP1}`;
-  player2Points.innerText = `Placar: ${currentPointP2}`;
+  player1Points.innerText = `TeamCap: ${currentPointP1}`;
+  player2Points.innerText = `TeamIron: ${currentPointP2}`;
   body.appendChild(playerScore);
 
   if (screen.width > 700) {
@@ -126,7 +143,13 @@ function createField(column, quad) {
     }
   }
   createMap(column, quad);
+  bgSound.play();
 }
+createField(numColunas, numLinhas);
+easy.addEventListener("click", () => {
+  // createField(numColunas, numLinhas)
+  initialScreen.classList.add("initial-none");
+});
 
 function createMap(numColunas, numLinhas) {
   for (let i = 0; i < numColunas; i++) {
@@ -140,14 +163,11 @@ function createMap(numColunas, numLinhas) {
     }
   }
 }
-
 // createField(numColunas, numLinhas)
 body.appendChild(footer);
 footer.appendChild(timer);
-
 setInterval(function () {
   time--;
-
   timer.innerText = `00:${time}`;
   if (time < 10) {
     timer.innerText = `00:0${time}`;
@@ -163,7 +183,6 @@ setInterval(function () {
     time = 30;
   }
 }, 1000);
-
 // Pedro
 const test = document.querySelectorAll(".column");
 let lastChild;
@@ -176,72 +195,138 @@ function addBall(a) {
     }
   }
 }
-
 // Inti
 score1 = 0;
 score2 = 0;
+let consectiveCap = 0;
+let consectiveIron = 0;
+
 const field = document.getElementById("field");
 
 function adicionandoBall() {
   for (let i = 0; i < test.length; i++) {
     test[i].addEventListener("click", function (evt) {
-      console.log("opa");
       createBall(test[i]);
-
       if (victoryVertical(map[i])) {
         if (lastPlayer == 1) {
           score1++;
+          consectiveIron = 0;
+          consectiveCap++;
           player1Points.innerText = `Placar:${score1}`;
         }
         if (lastPlayer == 2) {
           score2++;
+          consectiveCap = 0;
+          consectiveIron++;
           player2Points.innerText = `Placar:${score2}`;
+          // scoreArr.push(2)
         }
         victorious();
+        console.log(consectiveCap);
+        console.log(consectiveIron);
+        console.log("vertical");
       }
       if (victoryDiagonal()) {
         if (lastPlayer == 1) {
           score1++;
+          consectiveIron = 0;
+          consectiveCap++;
           player1Points.innerText = `Placar:${score1}`;
         }
         if (lastPlayer == 2) {
           score2++;
+          consectiveCap = 0;
+          consectiveIron++;
           player2Points.innerText = `Placar:${score2}`;
+          // scoreArr.push(2)
         }
         victorious();
+        console.log("diagonal");
       }
       if (victoryArrayHorizontal()) {
         if (lastPlayer == 1) {
           score1++;
+          consectiveIron = 0;
+          consectiveCap++;
           player1Points.innerText = `Placar:${score1}`;
         }
         if (lastPlayer == 2) {
           score2++;
+          consectiveCap = 0;
+          consectiveIron++;
           player2Points.innerText = `Placar:${score2}`;
+          //scoreArr.push(2)
         }
         victorious();
+        console.log("Horizontal");
       }
+
       if (tie()) {
-        console.log(`Empate`);
+        setTimeout(function () {
+          win.style.display = "flex";
+        }, 1500);
+        win.id = "draw";
+        setTimeout(function () {
+          win.style.display = "none";
+        }, 1500);
+        time = 31;
       }
     });
+    console.log(consectiveCap);
+    console.log(consectiveIron);
   }
 }
 adicionandoBall();
 
 function victorious() {
-  if (lastPlayer === 1) {
+  const tauntCap = document.getElementById("capTaunt");
+  const tauntIron = document.getElementById("ironTaunt");
+  let consec = false;
+  if (consectiveCap == 3) {
+    win.id = "capConsecutiveWin";
+    consec = true;
+  } else if (consectiveIron == 3) {
+    win.id = "ironConsecutiveWin";
+    consec = true;
+  } else if (lastPlayer === 1) {
     win.id = "capWin";
   } else {
     win.id = "ironWin";
   }
 
-  win.style.display = "flex";
-  setTimeout(() => {
-    win.style.display = "none";
-  }, 2000);
-
-  resetBoard();
+  if (consec === false) {
+    setTimeout(function () {
+      win.style.display = "flex";
+    }, 800);
+    setTimeout(() => {
+      win.style.display = "none";
+    }, 2700);
+    setTimeout(function () {
+      resetBoard();
+    }, 800);
+  } else if (consec === true && win.id === "capConsecutiveWin") {
+    setTimeout(function () {
+      tauntCap.play();
+      win.style.display = "flex";
+    }, 800);
+    setTimeout(() => {
+      win.style.display = "none";
+    }, 2800);
+    setTimeout(function () {
+      resetBoard();
+    }, 800);
+  } else if (consec === true && win.id === "ironConsecutiveWin") {
+    setTimeout(function () {
+      tauntIron.play();
+      win.style.display = "flex";
+    }, 800);
+    setTimeout(() => {
+      win.style.display = "none";
+    }, 4700);
+    setTimeout(function () {
+      resetBoard();
+    }, 800);
+  }
 }
 let currentPlayer = 1;
 let lastPlayer = 2;
@@ -255,7 +340,6 @@ function createBall(x) {
       lastChild.appendChild(discA);
       currentPlayer = 2;
       lastPlayer = 1;
-
       //map
       diagonalMap[lastChild.id[0]][lastChild.id[2]] = "red";
       map[lastChild.id[0]][lastChild.id[2]] = "red";
@@ -268,17 +352,14 @@ function createBall(x) {
       lastChild.appendChild(discB);
       currentPlayer = 1;
       lastPlayer = 2;
-
       //map
       diagonalMap[lastChild.id[0]][lastChild.id[2]] = "blue";
       map[lastChild.id[0]][lastChild.id[2]] = "blue";
       horizontal[lastChild.id[2]][lastChild.id[0]] = "blue";
     }
   }
-
   setTimeout(function () {
     playerSignTurn.style.animationName = "roll";
-
     if (currentPlayer == 2) {
       playerSignTurn.classList = "discB-style";
     } else {
@@ -339,13 +420,11 @@ function victoryArrayHorizontal() {
     }
   }
 }
-
 const nPlayers = ["red", "blue"];
 
 function victoryDiagonal() {
   const edgeX = diagonalMap[0].length - 2;
   const edgeY = diagonalMap.length - 2;
-
   for (let p = 0; p <= 1; p++) {
     for (let i = 0; i < edgeY; i++) {
       for (let j = 0; j < edgeX; j++) {
@@ -377,7 +456,6 @@ function victoryDiagonal() {
     }
   }
 }
-
 const cell = document.getElementsByClassName("cell");
 
 function tie() {
@@ -390,24 +468,21 @@ function tie() {
       return true;
     }
   }
-  win.style.display = "flex";
-  win.id = "draw";
-  setTimeout(function () {
-    win.style.display = "none";
-  }, 1500);
-  time = 31;
 }
 
 function reset() {
   const btnReset = document.createElement("button");
   btnReset.innerText = "Restart";
   body.appendChild(btnReset);
-
   btnReset.addEventListener("click", () => {
     for (let i = 0; i < cell.length; i++) {
       cell[i].innerHTML = "";
     }
     time = 31;
+    score2 = 0;
+    score1 = 0;
+    player1Points.innerText = `Placar:${score1}`;
+    player2Points.innerText = `Placar:${score2}`;
   });
 }
 reset();
@@ -422,3 +497,9 @@ function resetBoard() {
   createMap(numColunas, numLinhas);
   arrHorizontal(numLinhas, numColunas);
 }
+
+function unloadScrollBars() {
+  document.documentElement.style.overflow = "hidden";
+  document.body.scroll = "no";
+}
+unloadScrollBars();
