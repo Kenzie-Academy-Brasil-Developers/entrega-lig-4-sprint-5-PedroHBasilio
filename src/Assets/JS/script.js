@@ -35,30 +35,6 @@ btnFlex.appendChild(normalMode);
 let numColunas = 7;
 let numLinhas = 6;
 
-// boxSelectionModes.addEventListener("click", (evt) => {
-//     let selectedMode = evt.target.id;
-
-//     if (selectedMode === "easy") {
-//         numColunas = 5;
-//         numLinhas = 4;
-//     }
-//     if (selectedMode === "normal") {
-//         numColunas = 7;
-//         numLinhas = 6;
-//     }
-//     if (selectedMode === "hard") {
-//         numColunas = 10;
-//         numLinhas = 7;
-//     }
-//     createField(numColunas, numLinhas)
-
-//     // chamar função de reproduzir a musica tema do jogo
-//     initialScreen.classList.remove("initial-screen");
-//     initialScreen.classList.add("initial-none");
-
-// });
-// INTI - FINAL
-
 normalMode.addEventListener("click", (evt) => {
     let confirma = evt.target;
     const bgSound = document.getElementById("bgSound");
@@ -277,8 +253,6 @@ function adicionandoBall() {
 
             }
         })
-        console.log(consectiveCap)
-        console.log(consectiveIron)
     }
 }
 adicionandoBall();
@@ -338,7 +312,6 @@ let lastPlayer = 2;
 
 function createBall(x) {
   if (currentPlayer === 1) {
-    console.log("click");
     if (addBall(x)) {
       const discA = document.createElement("div");
       discA.classList.add("discA-style");
@@ -506,9 +479,3 @@ function resetBoard() {
   createMap(numColunas, numLinhas);
   arrHorizontal(numLinhas, numColunas);
 }
-
-// function unloadScrollBars() {
-//     document.documentElement.style.overflow = "hidden";
-//     document.body.scroll = "no";
-// }
-// unloadScrollBars();
