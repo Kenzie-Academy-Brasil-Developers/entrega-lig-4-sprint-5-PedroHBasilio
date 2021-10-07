@@ -1,11 +1,21 @@
 /* Inti */
 
+h1 {
+    margin-top: 60px;
+}
+
 .team-title {
-    background-image: linear-gradient(to left, rgb(73, 7, 7), rgb(229, 186, 186), rgb(32, 37, 116));
+    background-image: linear-gradient( to left, rgb(73, 7, 7), rgb(229, 186, 186), rgb(32, 37, 116));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: "Press Start 2P", cursive;
+    -webkit-text-stroke: 3px rgb(0, 0, 0);
+    font-size: 2rem;
+}
+
+h2.team-title {
+    font-size: 1.7rem;
 }
 
 .initial-none {
@@ -14,7 +24,7 @@
 
 .initial-screen {
     display: flex;
-    background-image: url('/src/Assets/Img/bgStartScreen.jpg');
+    background-image: url("/src/Assets/Img/bgStartScreen.jpg");
     background-position: center;
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
@@ -52,10 +62,6 @@
 }
 
 #blur>ol>li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
     padding: 10px 0;
     color: whitesmoke;
     text-shadow: 3px 5px 2px black;
@@ -63,36 +69,26 @@
 }
 
 .box-selection {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
     margin-top: 35px;
-    padding-top: 15px;
-    font-weight: 550;
-    width: 265px;
-    height: 75px;
-    background-color: black;
-    color: brown;
-    border-radius: 5px;
-    box-shadow: 8px 8px 5px 0px rgb(0 0 0 / 55%);
 }
 
 .btn-mobile {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    column-gap: 10px;
 }
 
 .btn-select {
-    width: 70px;
-    height: 30px;
-    margin-top: 10px;
+    width: 135px;
+    height: 52px;
+    margin-top: 5px;
     background: rgb(0, 0, 0);
-    font-weight: 700;
-    color: brown;
-    border-radius: 15px;
+    font-weight: 900;
+    color: red;
+    font-size: 1.3rem;
+    border-radius: 30px;
     box-shadow: 3px 3px 5px 0px rgb(0 0 0 / 55%);
+    border: 1px solid red;
 }
 
 .box-selection:focus {
@@ -105,7 +101,7 @@
     align-self: center;
     width: 50px;
     height: 50px;
-    background-image: url('/src/Assets/Img/Captain_America_Shield.png');
+    background-image: url("/src/Assets/Img/Captain_America_Shield.png");
     background-size: 50px 50px;
     border-radius: 100%;
     animation: throwIronMan 1s;
@@ -116,7 +112,7 @@
     align-self: center;
     width: 50px;
     height: 50px;
-    background-image: url('/src/Assets/Img/iron-man-helmet-3D-model_600.jpg');
+    background-image: url("/src/Assets/Img/iron-man-helmet-3D-model_600.jpg");
     background-size: 50px 50px;
     border-radius: 100%;
     animation: throwCaptain 1s;
@@ -133,7 +129,7 @@ footer header #roll {
 /* Sid */
 
 body {
-    background-image: url('/src/Assets/Img/mobileBG.jpg');
+    background-image: url("/src/Assets/Img/mobileBG.jpg");
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     margin-top: 100px;
