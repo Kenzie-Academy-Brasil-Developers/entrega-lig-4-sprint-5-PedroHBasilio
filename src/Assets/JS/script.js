@@ -31,6 +31,8 @@ btnFlex.appendChild(easyMode);
 btnFlex.appendChild(normalMode);
 btnFlex.appendChild(hardMode);
 
+const bgSound = document.getElementById('intro')
+
 let numColunas = 7;
 let numLinhas = 6;
 
@@ -57,7 +59,8 @@ let numLinhas = 6;
 
 // });
 // INTI - FINAL
-document.addEventListener('click', (evt) => {
+
+normalMode.addEventListener('click', (evt) => {
         let confirma = evt.target
         const taunt = document.getElementById('intro')
         taunt.play()
@@ -67,6 +70,7 @@ document.addEventListener('click', (evt) => {
             initialScreen.classList.add("initial-none");
 
         }
+
     })
     //Sid
 const body = document.getElementById('body')
@@ -144,6 +148,7 @@ function createField(column, quad) {
         }
     }
     createMap(column, quad)
+    bgSound.play()
 }
 createField(numColunas, numLinhas)
 easy.addEventListener('click', () => {
