@@ -1,7 +1,7 @@
 // INTI - COMEÇO
 const initialScreen = document.querySelector(".initial-screen");
 initialScreen.classList.add("initial-screen");
-const teste = document.querySelector("#teste");
+const teste = document.querySelector("#blur");
 const boxSelectionModes = document.createElement("div");
 boxSelectionModes.classList.add("box-selection");
 //boxSelectionModes.textContent = "Escolha qual nível quer jogar:";
@@ -141,9 +141,8 @@ function createField(column, quad) {
       createQuad.id = `${i}-${j}`;
       createColumn.appendChild(createQuad);
     }
-  }
-  createMap(column, quad);
-  bgSound.play();
+    createMap(column, quad)
+
 }
 createField(numColunas, numLinhas);
 easy.addEventListener("click", () => {
@@ -204,77 +203,86 @@ let consectiveIron = 0;
 const field = document.getElementById("field");
 
 function adicionandoBall() {
-  for (let i = 0; i < test.length; i++) {
-    test[i].addEventListener("click", function (evt) {
-      createBall(test[i]);
-      if (victoryVertical(map[i])) {
-        if (lastPlayer == 1) {
-          score1++;
-          consectiveIron = 0;
-          consectiveCap++;
-          player1Points.innerText = `Placar:${score1}`;
-        }
-        if (lastPlayer == 2) {
-          score2++;
-          consectiveCap = 0;
-          consectiveIron++;
-          player2Points.innerText = `Placar:${score2}`;
-          // scoreArr.push(2)
-        }
-        victorious();
-        console.log(consectiveCap);
-        console.log(consectiveIron);
-        console.log("vertical");
-      }
-      if (victoryDiagonal()) {
-        if (lastPlayer == 1) {
-          score1++;
-          consectiveIron = 0;
-          consectiveCap++;
-          player1Points.innerText = `Placar:${score1}`;
-        }
-        if (lastPlayer == 2) {
-          score2++;
-          consectiveCap = 0;
-          consectiveIron++;
-          player2Points.innerText = `Placar:${score2}`;
-          // scoreArr.push(2)
-        }
-        victorious();
-        console.log("diagonal");
-      }
-      if (victoryArrayHorizontal()) {
-        if (lastPlayer == 1) {
-          score1++;
-          consectiveIron = 0;
-          consectiveCap++;
-          player1Points.innerText = `Placar:${score1}`;
-        }
-        if (lastPlayer == 2) {
-          score2++;
-          consectiveCap = 0;
-          consectiveIron++;
-          player2Points.innerText = `Placar:${score2}`;
-          //scoreArr.push(2)
-        }
-        victorious();
-        console.log("Horizontal");
-      }
+    bgSound.play()
+    for (let i = 0; i < test.length; i++) {
+        test[i].addEventListener('click', function(evt) {
+            createBall(test[i])
+            if (victoryVertical(map[i])) {
+                if (lastPlayer == 1) {
+                    score1++
+                    consectiveIron = 0
+                    consectiveCap++
+                    player1Points.innerText = `Placar:${score1}`
 
-      if (tie()) {
-        setTimeout(function () {
-          win.style.display = "flex";
-        }, 1500);
-        win.id = "draw";
-        setTimeout(function () {
-          win.style.display = "none";
-        }, 1500);
-        time = 31;
-      }
-    });
-    console.log(consectiveCap);
-    console.log(consectiveIron);
-  }
+                }
+                if (lastPlayer == 2) {
+                    score2++
+                    consectiveCap = 0
+                    consectiveIron++
+                    player2Points.innerText = `Placar:${score2}`
+
+                }
+                victorious()
+                console.log(consectiveCap)
+                console.log(consectiveIron)
+                console.log('vertical')
+            }
+            if (victoryDiagonal()) {
+                if (lastPlayer == 1) {
+                    score1++
+                    consectiveIron = 0
+                    consectiveCap++
+                    player1Points.innerText = `Placar:${score1}`
+
+                }
+                if (lastPlayer == 2) {
+                    score2++
+                    consectiveCap = 0
+                    consectiveIron++
+                    player2Points.innerText = `Placar:${score2}`
+
+                }
+                victorious()
+                console.log('diagonal')
+            }
+            if (victoryArrayHorizontal()) {
+                if (lastPlayer == 1) {
+                    score1++
+                    consectiveIron = 0
+                    consectiveCap++
+                    player1Points.innerText = `Placar:${score1}`
+
+                }
+                if (lastPlayer == 2) {
+                    score2++
+                    consectiveCap = 0
+                    consectiveIron++
+                    player2Points.innerText = `Placar:${score2}`
+
+                }
+                victorious()
+                console.log('Horizontal')
+            }
+
+            if (tie()) {
+                win.id = "draw"
+                setTimeout(function() {
+                    win.style.display = 'flex'
+                }, 1500)
+
+                setTimeout(function() {
+                    win.style.display = 'none'
+                }, 3000)
+                time = 31
+                setTimeout(function() {
+                    resetBoard()
+                }, 2500)
+
+            }
+        })
+        console.log(consectiveCap)
+        console.log(consectiveIron)
+    }
 }
 adicionandoBall();
 
@@ -471,19 +479,20 @@ function tie() {
 }
 
 function reset() {
-  const btnReset = document.createElement("button");
-  btnReset.innerText = "Restart";
-  body.appendChild(btnReset);
-  btnReset.addEventListener("click", () => {
-    for (let i = 0; i < cell.length; i++) {
-      cell[i].innerHTML = "";
-    }
-    time = 31;
-    score2 = 0;
-    score1 = 0;
-    player1Points.innerText = `Placar:${score1}`;
-    player2Points.innerText = `Placar:${score2}`;
-  });
+    const btnReset = document.createElement('button')
+    btnReset.id = "reset"
+    btnReset.innerText = 'Restart'
+    body.appendChild(btnReset)
+    btnReset.addEventListener('click', () => {
+        for (let i = 0; i < cell.length; i++) {
+            cell[i].innerHTML = ""
+        }
+        time = 31
+        score2 = 0
+        score1 = 0
+        player1Points.innerText = `Placar:${score1}`
+        player2Points.innerText = `Placar:${score2}`
+    })
 }
 reset();
 
