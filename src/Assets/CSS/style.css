@@ -47,7 +47,7 @@ h2.team-title {
   align-items: center;
   position: absolute;
   width: 100vw;
-  height: 105%;
+  height: 115%;
   backdrop-filter: blur(10px);
 }
 
