@@ -142,6 +142,7 @@ footer header #roll {
 
 body {
     background-image: url("../Img/mobileBG.jpg");
+    background-color: black;
     background-size: 100vw 100%;
     background-repeat: no-repeat;
     margin-top: 100px;
