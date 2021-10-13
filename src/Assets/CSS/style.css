@@ -104,10 +104,10 @@ h2.team-title {
 .discA-style {
     display: flex;
     align-self: center;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     background-image: url("../Img/Captain_America_Shield.png");
-    background-size: 50px 50px;
+    background-size: 100%;
     border-radius: 100%;
     animation: throwIronMan 1s;
 }
@@ -115,10 +115,10 @@ h2.team-title {
 .discB-style {
     display: flex;
     align-self: center;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     background-image: url("../Img/iron-man-helmet-3D-model_600.jpg");
-    background-size: 50px 50px;
+    background-size: 100%;
     border-radius: 100%;
     animation: throwCaptain 1s;
 }
@@ -226,8 +226,8 @@ footer {
 }
 
 .cell {
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border: 3px double rgb(219, 51, 51);
 }
 
