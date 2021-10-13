@@ -17,6 +17,7 @@ h1 {
   font-family: "Press Start 2P", cursive;
   -webkit-text-stroke: 3px rgb(0, 0, 0);
   font-size: 2rem;
+  text-align: center;
 }
 
 h2.team-title {
